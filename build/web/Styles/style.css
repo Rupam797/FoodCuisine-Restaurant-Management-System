@@ -1,0 +1,235 @@
+/* Google Fonts - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body 
+{
+	position: absolute;
+  display: flex;
+	justify-content: center;
+	align-items: center;
+  min-height: 100vh;
+  align-content: center;
+margin: auto;
+margin-left: 50%;
+/* background-image: url(../Images/bac.png);*/
+ background-attachment: fixed;
+ background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+
+
+}
+
+.container {
+  justify-content: center;
+	align-items: center;
+  position: fixed;
+  max-width: 380px;
+  width: 80%;
+  /* height: 57%; */
+  padding: 25px;
+  border-radius: 8px;
+  background: whitesmoke;  
+  box-shadow: 0 20px 40px rgba(0,0,0,9);
+  z-index: 100;
+  /* border: 2px solid blue; */
+
+}
+.container header {
+
+  font-size: 30px;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  margin-left: 110px;
+  color: #26643b; ;
+  /* margin-right: 50%; */
+}
+
+.container h3{
+
+  font-size: 30px;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  margin-left: 125px;
+  color: #26643b; ;
+  /* margin-right: 50%; */
+}
+
+.container form {
+
+  margin-top: 30px;
+}
+form .field {
+ 
+  margin-bottom: 20px;
+}
+form .input-field {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  color: white;
+  /* background-color: #303030; */
+}
+.input-field input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  padding: 0 15px;
+  font-size: 15px;
+  background: whitesmoke;
+  color: black;
+  border: 1.5px solid #26643b; 
+}
+.invalid input {
+  border-color: #26643b; 
+}
+.input-field .show-hide {
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: black;
+  cursor: pointer;
+  padding: 3px;
+}
+.field .error {
+  display: flex;
+  align-items: center;
+  margin-top:10px;
+  color: #ff0000;
+  font-size: 14px;
+  display: none;
+}
+.invalid .error {
+  display: flex;
+}
+.error .error-icon {
+  margin-right: 6px;
+  font-size: 15px;
+}
+.create-password .error {
+  align-items: flex-start;
+}
+.create-password .error-icon {
+  margin-top: 4px;
+}
+.button {
+  margin: 25px 0 6px;
+}
+
+form .links 
+{
+	position: relative;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+  align-items: right;
+}
+form .links a 
+{
+	color: #26643b; 
+	text-decoration: none;
+}
+form .link a 
+{
+ 
+	color: #26643b; 
+	text-decoration: none;
+}
+
+form .link p
+{
+ 
+	color: black;
+	text-decoration: none;
+}
+
+
+
+
+form .links a:nth-child(2)
+{
+	color: #26643b; 
+	
+}
+
+.button input {
+  color: whitesmoke;
+  font-size: 19px;
+  font-weight: 500;
+  background-color: #26643b;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+}
+.button input:hover {
+  background-color: rgb(83, 204, 120);
+  color: black;
+}
+
+.button input:active {
+  transform: scale(0.95);
+}
+
+
+.line{
+  background-color: rgb(195, 195, 195);
+  margin: 4px;
+  height: 1px;
+  width:98%;
+  margin-bottom: 25px;
+  margin-top: 25px;
+
+}
+
+.face-icon{
+  position: absolute;
+  margin-left:0% ;
+  width: 30px;
+  height: 30px; 
+  font-size: 25px;
+  padding-left: 10px;
+   display: flex; 
+  align-items: center; 
+}
+.google{
+  opacity: 0.7;
+  margin-left: 5px;
+  text-align: center;
+  border: #ffffff;
+  
+}
+
+.thirdLogin {
+border: 3px solid #26643b; ;
+font-size:  18px;
+padding: 8px;
+color: black;
+}
+
+.text{
+  color: black;
+  text-decoration: none;
+}
+
+.button{
+  margin-bottom: 13px;
+  margin-top: 13px;
+
+}
+
+.forgot{
+   
+   margin-left: 195px;
+}

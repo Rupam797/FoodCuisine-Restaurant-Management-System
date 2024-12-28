@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="../Images/favicon.ico" type="image/x-icon">
+  <title>Sign Up | Food Cuisine</title>
+  <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'>
+  <link rel="stylesheet" href="../Styles/style.css">
+
+</head>
+<body>
+  
+
+<!-- partial:index.partial.html -->
+<div class="container">
+  <header>Sign Up </header>
+  <form name="signupform" action="http://localhost:8080/RMS/SignupUser" method="post">
+    <div class="field name-field">
+      <div class="input-field">
+        <input type="text" placeholder="Enter your Name" class="name" name="Uname" required />
+      </div>
+      <span class="error name-error">
+        <i class="bx bx-error-circle error-icon"></i>
+        <p class="error-text">Please enter a valid Name</p>
+      </span>
+    </div>
+
+    <div class="field email-field">
+      <div class="input-field">
+        <input type="email" placeholder="Enter your email" class="email" name="Uemail" required />
+      </div>
+      <span class="error email-error">
+        <i class="bx bx-error-circle error-icon"></i>
+        <p class="error-text">Please enter a valid email</p>
+      </span>
+    </div>
+
+    <div class="field email-field">
+      <div class="input-field">
+    <input type="number" placeholder="Enter your age" class="age" min="1" name="Uage" required />
+    </div>
+    </div>
+
+  <div class="field email-field">
+
+    <label>Gender:</label>
+    <input type="radio" id="male" name="Ugender" value="male"  required>
+    <label for="male">Male</label>
+
+    <input type="radio" id="female" name="Ugender" value="female">
+    <label for="female">Female</label>
+
+    <input type="radio" id="other" name="Ugender" value="other">
+    <label for="other">Others</label>
+
+  </div>
+  
+
+
+    <div class="field create-password">
+      <div class="input-field">
+        <input type="password" placeholder="Password" class="password" name="Upassword" required />
+        <i class="bx bx-hide show-hide"></i>
+      </div>
+      <span class="error password-error">
+        <i class="bx bx-error-circle error-icon"></i>
+        <p class="error-text">
+          Please enter atleast 8 character with number, symbol, small and
+          capital letter.
+        </p>
+      </span>
+    </div>
+    <div class="field confirm-password">
+      <div class="input-field">
+        <input type="password" placeholder="Confirm Password" class="cPassword" name="Ucpassword" required />
+        <i class="bx bx-hide show-hide"></i>
+      </div>
+      <span class="error cPassword-error">
+        <i class="bx bx-error-circle error-icon"></i>
+        <p class="error-text">Password didn't match</p>
+      </span>
+    </div>
+    <div class="links">
+      <a href="Email_forgot_password.jsp">Forgot Password</a>
+      <a href="../Pages/login.html">Login</a>
+    </div>
+    <div class="input-field button">
+      <input type="submit" value="Signup Now" />
+    </div>
+  </form>
+</div>
+
+
+  <script  src="../Js/signup.js"></script>
+
+</body>
+</html>

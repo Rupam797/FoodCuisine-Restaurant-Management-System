@@ -1,0 +1,152 @@
+.icon-cart svg {
+    width: 35px;
+    height: 35px;
+    color: #26643b; 
+    margin-top: 0px;
+    cursor: pointer;
+  }
+
+  .icon-cart span{
+    font-size: 1.5em;
+    
+  }
+
+.cartTab{
+    width: 500px;
+    background-color: #353432;
+    color: #eee;
+    position: fixed;
+    inset: 0 -500px 0 auto; 
+    display: grid;
+    grid-template-rows: 70px 1fr 70px;
+    transition: 1s;
+    font-size: 18px;
+}
+
+body.showCart .cartTab{
+    inset: 0 0 0 auto;
+}
+
+body.showCart .cartTab{
+    transform: translateX(-0px);
+}
+
+.cartTab h1{
+    padding: 20px;
+    margin: 0;
+    font-weight: 300;
+    font-size: 130%;
+}
+
+.cartTab .btn{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+}
+
+.cartTab .btn button{
+    background-color: #60ac51; 
+    border: none;
+    font-family: Poppins;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.cartTab .btn .close{
+    background-color: #eee;
+}
+
+/* ------------------------------------ 
+---------------------------------------*/
+
+  #cart {
+    margin-top: 20px;
+    max-width: 600px;
+    padding: 10px;
+    
+  }
+  
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .cart-item span {
+    flex: 1;
+    text-align: left;
+  }
+
+  .menu_btn {
+    background-color:   #26643b; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 340px;
+    position: absolute;
+
+  }
+  
+  .top_menu_btn {
+    background-color:   #26643b; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 115px;
+   
+
+  }
+  .menu_btn:hover, .top_menu_btn:hover {
+    background-color:#218838;
+  }
+
+  .quantity-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding:7px 0px;
+    margin: 0 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  
+  .delete-btn {
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .delete-btn {
+    background-color: #ff4d4d;
+  }
+  
+  .quantity-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .delete-btn:hover {
+    background-color: #cc0000;
+  }
+  
+  .cart-item button {
+    min-width: 40px;
+    text-align: center;
+  }
+
+ 
+  
+  
+  

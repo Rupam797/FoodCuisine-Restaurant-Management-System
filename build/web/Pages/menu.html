@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="../Images/favicon.ico" type="image/x-icon">
+  <title>Menu | Food Cuisine</title>
+  <link rel="stylesheet" href="../Styles/reset.css">
+  <link rel="stylesheet" href="../Styles/globalStyles.css">
+  <link rel="stylesheet" href="../Styles/components.css">
+  <!-- aos library css  -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <!-- Add your custom css -->
+  <link rel="stylesheet" href="../Styles/menu.css">
+</head>
+
+<body>
+
+  <!-- Nav Section -->
+  <div class="nav">
+    <div class="container">
+      <div class="nav__wrapper">
+        <a href="../Styles/index.html" class="logo">
+          <img src="../Images/logo.jpeg" alt="Food cuisine">
+        </a>
+        <nav>
+          <div class="nav__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="feather feather-menu">
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </div>
+          <div class="nav__bgOverlay"></div>
+          <ol class="nav__list">
+            <div class="nav__close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-x">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </div>
+            <div class="nav__list__wrapper">
+              <li><a class="nav__link" href="../Pages/index.html">Home</a></li>
+              <li><a class="nav__link" href="../Pages/menu.html">Menu</a></li>
+              <li><a class="nav__link" href="../Pages/about.html">About</a></li>
+              <li><a class="nav__link" href="../Pages/contact.html">Contact</a></li>
+              <li><a class="nav__link" href="../Dynamic/login.jsp">Log in </a></li>
+              <li><a class="nav__link" href="../Dynamic/signup.jsp">Sign Up</a></li>
+              <li><a href="../Pages/booking.html" class="btn primary-btn">Book Table</a></li>
+            </div>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <!-- End Nav Section -->
+  <!-- page Title -->
+  <section id="page__title" data-aos="fade-up">
+    <div class="container">
+      <h2 class="page__title__text">
+        Explore Our Menu
+      </h2>
+    </div>
+  </section>
+  <!-- Our Specials -->
+  <section id="ourSpecials" data-aos="fade-up">
+    <div class="container">
+      <h3 class="ourSpecials__title">Our Specials</h3>
+      <div class="ourSpecials__wrapper">
+        <div class="ourSpecials__item">
+          <div class="ourSpecials__item__img">
+            <img src="../Images/food-3.png" alt="food img">
+          </div>
+          <div class="ourSpecials__item__info">
+            <h3 class="ourSpecials__item__title">
+              Benagli Thali (Non veg)
+            </h3>
+            <h5 class="text">
+              Bengali Thali, non-veg, offer diverse flavors in one platter, with curries, dal, rice, dessert, and sometimes meat or seafood, capturing regional culinary richness.</h5>
+              <br><br><br><br>
+            <h4 class="ourSpecials__item__price">₹1150</h4>
+            <div class="ourSpecials__item__stars">
+              <img src="../Images/3star.png" alt="3 stars">
+            </div>
+          </div>
+          <div class="menu_btn"><a href="../Dynamic/login.jsp">Order Now</a></div>
+        </div>
+        <div class="ourSpecials__item">
+          <div class="ourSpecials__item__img">
+            <img src="../Images/food-1.png" alt="food img">
+          </div>
+          <div class="ourSpecials__item__info">
+            <h3 class="ourSpecials__item__title">
+              Chinese Food bowls
+            </h3>
+            <h5 class="text">
+              Chinese food bowls feature rice or noodles with stir-fried vegetables, proteins, and flavorful sauces. Each bowl offers a balanced taste of Chinese culinary tradition, from spicy to savory flavors.</h5>
+              <br><br><br><br>
+            <h4 class="ourSpecials__item__price">₹1250</h4>
+            <div class="ourSpecials__item__stars">
+              <img src="../Images/3star.png" alt="3 stars">
+            </div>
+          </div>
+          <div class="menu_btn"><a href="../Dynamic/login.jsp">Order Now</a></div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  <!-- End Our Specials -->
+  <!-- Top Dishes -->
+  <section id="dishGrid" data-aos="fade-down">
+    <div class="container">
+      <h2 class="dishGrid__title">
+        Top Dishes
+      </h2>
+      <div class="dishGrid__wrapper">
+        <div class="dishGrid__item">
+          <div class="dishGrid__item__img">
+            <img src="../Images/biriyani.webp" alt="food img">
+          </div>
+          <div class="dishGrid__item__info">
+            <h3 class="dishGrid__item__title">
+              Mutton Biriyani
+            </h3>
+            <h3 class="dishGrid__item__price">₹450</h3>
+            <div class="dishGrid__item__stars">
+              <img src="../Images/3star.png" alt="3 star">
+            </div>
+          </div>
+          <a href="../Dynamic/login.jsp" class="top_menu_btn">Order Now</a>
+        </div>
+        <div class="dishGrid__item">
+          <div class="dishGrid__item__img">
+            <img src="../Images/Chowmein.jpg" alt="food img">
+          </div>
+          <div class="dishGrid__item__info">
+            <h3 class="dishGrid__item__title">
+              Chowmein
+            </h3>
+            <h3 class="dishGrid__item__price">₹250</h3>
+            <div class="dishGrid__item__stars">
+              <img src="../Images/3star.png" alt="3 star">
+            </div>
+          </div>
+          <a href="../Dynamic/login.jsp" class="top_menu_btn">Order Now</a>
+        </div>
+        <div class="dishGrid__item">
+          <div class="dishGrid__item__img">
+            <img src="../Images/momo.jpg" alt="food img">
+          </div>
+          <div class="dishGrid__item__info">
+            <h3 class="dishGrid__item__title">
+              Chicken Momo
+            </h3>
+            <h3 class="dishGrid__item__price">₹150</h3>
+            <div class="dishGrid__item__stars">
+              <img src="../Images/3star.png" alt="3 star">
+            </div>
+          </div>
+          <a href="../Dynamic/login.jsp" class="top_menu_btn">Order Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Top Dishes -->
+  <!-- Breakfast Dishes -->
+  <section id="dishGrid" data-aos="fade-up">
+    <div class="container">
+      <h2 class="dishGrid__title">
+        Breakfast
+      </h2>
+      <div class="dishGrid__wrapper">
+        <div class="dishGrid__item">
+          <div class="dishGrid__item__img">
+            <img src="../Images/dosha.webp" alt="food img">
+          </div>
+          <div class="dishGrid__item__info">
+            <h3 class="dishGrid__item__title">
+              Dosha
+            </h3>
+            <h3 class="dishGrid__item__price">₹150</h3>
+            <div class="dishGrid__item__stars">
+              <img src="../Images/3star.png" alt="3 star">
+            </div>
+          </div>
+          <a href="../Dynamic/login.jsp" class="top_menu_btn">Order Now</a>
+        </div>
+        <div class="dishGrid__item">
+          <div class="dishGrid__item__img">
+            <img src="../Images/tost.jpg" alt="food img">
+          </div>
+          <div class="dishGrid__item__info">
+            <h3 class="dishGrid__item__title">
+              Egg Bread Tost 
+            </h3>
+            <h3 class="dishGrid__item__price">₹120</h3>
+            <div class="dishGrid__item__stars">
+              <img src="../Images/3star.png" alt="3 star">
+            </div>
+          </div>
+          <a href="../Dynamic/login.jsp" class="top_menu_btn">Order Now</a>
+        </div>
+        <div class="dishGrid__item">
+          <div class="dishGrid__item__img">
+            <img src="../Images/nun.jpeg" alt="food img">
+          </div>
+          <div class="dishGrid__item__info">
+            <h3 class="dishGrid__item__title">
+              Nun & Chana Masala  
+            </h3>
+            <h3 class="dishGrid__item__price">₹150</h3>
+            <div class="dishGrid__item__stars">
+              <img src="../Images/3star.png" alt="3 star">
+            </div>
+          </div>
+          <a href="../Dynamic/login.jsp" class="top_menu_btn">Order Now</a>
+        </div>
+        <div class="dishGrid__item">
+          <div class="dishGrid__item__img">
+            <img src="../Images/muesli.jpg" alt="food img">
+          </div>
+          <div class="dishGrid__item__info">
+            <h3 class="dishGrid__item__title">
+              Muesli & Juice 
+            </h3>
+            <h3 class="dishGrid__item__price">₹120</h3>
+            <div class="dishGrid__item__stars">
+              <img src="../Images/3star.png" alt="3 star">
+            </div>
+          </div>
+          <a href="../Dynamic/login.jsp" class="top_menu_btn">Order Now</a>
+        </div>
+        <div class="dishGrid__item">
+          <div class="dishGrid__item__img">
+            <img src="../Images/donat_bread.jpg" alt="food img">
+          </div>
+          <div class="dishGrid__item__info">
+            <h3 class="dishGrid__item__title">
+              Doughnut Bread
+            </h3>
+            <h3 class="dishGrid__item__price">₹120</h3>
+            <div class="dishGrid__item__stars">
+              <img src="../Images/3star.png" alt="3 star">
+            </div>
+          </div>
+          <a href="../Dynamic/login.jsp" class="top_menu_btn">Order Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Breakfast Dishes -->
+  <!-- Lunch Dishes -->
+  <section id="dishGrid" data-aos="fade-up">
+    <div class="container">
+      <h2 class="dishGrid__title">
+        Lunch
+      </h2>
+      <div class="dishGrid__wrapper">
+        <div class="dishGrid__item">
+          <div class="dishGrid__item__img">
+            <img src="../Images/veg.jpg" alt="food img">
+          </div>
+          <div class="dishGrid__item__info">
+            <h3 class="dishGrid__item__title">
+              Veg Thali 
+            </h3>
+            <h3 class="dishGrid__item__price">₹250</h3>
+            <div class="dishGrid__item__stars">
+              <img src="../Images/3star.png" alt="3 star">
+            </div>
+          </div>
+          <a href="" class="top_menu_btn">Order Now</a>
+        </div>
+        <div class="dishGrid__item">
+          <div class="dishGrid__item__img">
+            <img src="../Images/non_veg.jpg" alt="food img">
+          </div>
+          <div class="dishGrid__item__info">
+            <h3 class="dishGrid__item__title">
+              Non-Veg Thali 
+            </h3>
+            <h3 class="dishGrid__item__price">₹450</h3>
+            <div class="dishGrid__item__stars">
+              <img src="../Images/3star.png" alt="3 star">
+            </div>
+          </div>
+          <a href="../Dynamic/login.jsp" class="top_menu_btn">Order Now</a>
+        </div>
+        <div class="dishGrid__item">
+          <div class="dishGrid__item__img">
+            <img src="../Images/Polao.jpg" alt="food img">
+          </div>
+          <div class="dishGrid__item__info">
+            <h3 class="dishGrid__item__title">
+              Polao Rice 
+            </h3>
+            <h3 class="dishGrid__item__price">₹300</h3>
+            <div class="dishGrid__item__stars">
+              <img src="../Images/3star.png" alt="3 star">
+            </div>
+          </div>
+          <a href="../Dynamic/login.jsp" class="top_menu_btn">Order Now</a>
+        </div>
+        <div class="dishGrid__item">
+          <div class="dishGrid__item__img">
+            <img src="../Images/meatball.jpg" alt="food img">
+          </div>
+          <div class="dishGrid__item__info">
+            <h3 class="dishGrid__item__title">
+              Rice with Chicken Meatballs
+            </h3>
+            <h3 class="dishGrid__item__price">₹450</h3>
+            <div class="dishGrid__item__stars">
+              <img src="../Images/3star.png" alt="3 star">
+            </div>
+          </div>
+          <a href="../Dynamic/login.jsp" class="top_menu_btn">Order Now</a>
+        </div>
+        <div class="dishGrid__item">
+          <div class="dishGrid__item__img">
+            <img src="../Images/combo.jpg"  alt="food img">
+          </div>
+          <div class="dishGrid__item__info">
+            <h3 class="dishGrid__item__title">
+              Chinese Mix Rice with broccoli 
+            </h3>
+            <h3 class="dishGrid__item__price">₹550</h3>
+            <div class="dishGrid__item__stars">
+              <img src="../Images/3star.png" alt="3 star">
+            </div>
+          </div>
+          <a href="../Dynamic/login.jsp" class="top_menu_btn">Order Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Lunch Dishes -->
+  <!-- Dinner Dishes -->
+  <section id="dishGrid" data-aos="fade-up">
+    <div class="container">
+      <h2 class="dishGrid__title">
+        Dinner
+      </h2>
+      <div class="dishGrid__wrapper">
+        <div class="dishGrid__item">
+          <div class="dishGrid__item__img">
+            <img src="../Images/mix.jpg" alt="food img">
+          </div>
+          <div class="dishGrid__item__info">
+            <h3 class="dishGrid__item__title">
+               Non-Veg Thali
+            </h3>
+            <h3 class="dishGrid__item__price">₹450</h3>
+            <div class="dishGrid__item__stars">
+              <img src="../Images/3star.png" alt="3 star">
+            </div>
+          </div>
+          <a href="../Dynamic/login.jsp" class="top_menu_btn">Order Now</a>
+        </div>
+        <div class="dishGrid__item">
+          <div class="dishGrid__item__img">
+            <img src="../Images/ruti_chicken.png" alt="food img">
+          </div>
+          <div class="dishGrid__item__info">
+            <h3 class="dishGrid__item__title">
+              Tanduri Roti & Chicken Tikka 
+            </h3>
+            <h3 class="dishGrid__item__price">₹350</h3>
+            <div class="dishGrid__item__stars">
+              <img src="../Images/3star.png" alt="3 star">
+            </div>
+          </div>
+          <a href="../Dynamic/login.jsp" class="top_menu_btn">Order Now</a>
+        </div>
+        <div class="dishGrid__item">
+          <div class="dishGrid__item__img">
+            <img src="../Images/biriyani.webp" alt="food img">
+          </div>
+          <div class="dishGrid__item__info">
+            <h3 class="dishGrid__item__title">
+              Chicken Biriyani
+            </h3>
+            <h3 class="dishGrid__item__price">₹350</h3>
+            <div class="dishGrid__item__stars">
+              <img src="../Images/3star.png" alt="3 star">
+            </div>
+          </div>
+          <a href="../Dynamic/login.jsp" class="top_menu_btn">Order Now</a>
+        </div>
+        <div class="dishGrid__item">
+          <div class="dishGrid__item__img">
+            <img src="../Images/chau.jpg" alt="food img">
+          </div>
+          <div class="dishGrid__item__info">
+            <h3 class="dishGrid__item__title">
+              Chowmein 
+            </h3>
+            <h3 class="dishGrid__item__price">₹250</h3>
+            <div class="dishGrid__item__stars">
+              <img src="../Images/3star.png" alt="3 star">
+            </div>
+          </div>
+          <a href="../Dynamic/login.jsp" class="top_menu_btn">Order Now</a>
+        </div>
+        <div class="dishGrid__item">
+          <div class="dishGrid__item__img">
+            <img src="../Images/pizza.jpg" alt="food img">
+          </div>
+          <div class="dishGrid__item__info">
+            <h3 class="dishGrid__item__title">
+              Pizza
+            </h3>
+            <h3 class="dishGrid__item__price">₹325</h3>
+            <div class="dishGrid__item__stars">
+              <img src="../Images/3star.png" alt="3 star">
+            </div>
+          </div>
+          <a href="../Dynamic/login.jsp" class="top_menu_btn">Order Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Dinner Dishes -->
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer__wrapper">
+        <div class="footer__col1">
+          <div class="footer__logo">
+            <img src="../Images/logo2.png" alt="Food cuisine">
+          </div>
+          <p class="footer__desc">
+            Fresh and delicious traditional Indian & Chinese food to delight the whole family.
+          </p>
+          <div class="footer__socials">
+            <h4 class="footer__socials__title">Follow us</h4>
+            <ol class="footer__socials__list">
+              <li>
+                <a href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-facebook">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-instagram">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-twitter">
+                    <path
+                      d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                  </svg>
+                </a>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div class="footer__col2">
+          <h3 class="footer__text__title">
+            Links
+          </h3>
+          <ol class="footer__text">
+            <li>
+              <a href="../Styles/index.html">Home</a>
+            </li>
+            <li>
+              <a href="../Styles/menu.html">Menu</a>
+            </li>
+            <li>
+              <a href="../Styles/booking.html">Book Table</a>
+            </li>
+            <li>
+              <a href="../Styles/about.html">About Us</a>
+            </li>
+            <li>
+              <a href="../Styles/contact.html">contact Us</a>
+            </li>
+            <li>
+              <a href="#">Privacy Policy</a>
+            </li>
+          </ol>
+        </div>
+        <div class="footer__col3">
+          <h3 class="footer__text__title">
+            Support
+          </h3>
+          <ol class="footer__text">
+            <li>
+              <a href="../Styles/contact.html">Contact</a>
+            </li>
+            <li>
+              <a href="../Styles/contact.html">Support Center</a>
+            </li>
+            <li>
+              <a href="../Styles/contact.html">Feedback</a>
+            </li>
+          </ol>
+        </div>
+        <div class="footer__col4">
+          <h3 class="footer__text__title">
+            Contact
+          </h3>
+          <ol class="footer__text">
+            <li>
+              <a href="#">+91 9999999999</a>
+            </li>
+            <li>
+              <a href="#">foodcuisine@gmail.com</a>
+            </li>
+            <li>
+              <a href="#">Salt-Lake, Kolkata, India</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div id="copyright">
+    <div class="container">
+      <p class="copyright__text">
+        By continuing this page, you agree to our Terms of Service, Cookie Policy, Privacy Policy. © Food Cuisine™ Ltd. | All rights reserved 2024-2025.
+        <br>Made by: Rupam Giri , Amit Roy , Rupsha Maity , Souvik Kamila 
+      </p>
+    </div>
+  </div>
+  <!-- End Footer -->
+  <!-- aos script -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <!-- custom script -->
+  <script src="../Js/main.js"></script>
+</body>
+
+</html>
