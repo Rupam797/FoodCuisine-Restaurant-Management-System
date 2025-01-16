@@ -60,9 +60,10 @@
                 <i class="fa-solid fa-user fa-bounce"></i> <%= username != null ? username : "Profile" %></button>
               <div class="dropdown">
                 <div class="profile-info">
-                  <img src="<%= profilePic != null ? "../" + profilePic : "" %>" 
-                       alt="Profile" 
-                       class="profile-pic-large">
+                 <img src="<%= profilePic != null ? "../Images/" + profilePic : "../Images/profile-circle.jpg" %>" 
+                    alt="Profile" 
+                    class="profile-pic-large">
+
                   <p class="username">Hi, <%= username != null ? username : "Guest" %></p>
                   <p class="email"><%= userEmail != null ? userEmail : "Not available" %></p>
                 </div>

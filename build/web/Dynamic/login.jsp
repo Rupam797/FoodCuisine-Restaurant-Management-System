@@ -9,8 +9,7 @@
   <title>Login | Food Cuisine</title>
   <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'>
   <link rel="stylesheet" href="../Styles/style.css">
-  <!-- Add SweetAlert2 Stylesheet in the head -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+ 
 
   
   

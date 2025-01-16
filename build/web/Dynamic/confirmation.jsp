@@ -1,14 +1,12 @@
+<%@ page import="java.util.*" %>
+<%@ page session="true" %>
 
-<%@page import="java.util.List"%>
-<%@page import="adminpack.Product"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../Images/favicon.ico" type="image/x-icon">
-    <title>Confirmation | Food Cuisine</title>
+    <title>Order Confirmation</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -49,8 +47,8 @@
             border-radius: 4px;
         }
 
-        .confirmation-container button:hover{
-            background-color:#218838;
+        .confirmation-container button:hover {
+            background-color: #218838;
         }
         .product-list {
             text-align: center;
@@ -59,37 +57,38 @@
             border-radius: 40px;
             margin-left: auto;
             margin-right: auto;
-            max-width: 400px;
+            max-width: 500px;
             position: relative;
-            
         }
     </style>
 </head>
+<body>
 
-<body> 
-    <div class="confirmation-container"> 
-        <h1>Payment Successful!</h1> 
-        <p id="customer-name">Customer Name: <%= request.getParameter("name") %></p> 
-        <p id="phone-number">Phone Number: <%= request.getParameter("phone") %></p> 
-        <p id="total-amount">Amount Paid: <%= request.getParameter("amount") %></p> 
-        <div class="product-list" id="product-list"> 
-            <h3>Order Details:</h3> 
-            <%  
-                List<Product> products = (List<Product>) session.getAttribute("cartProducts"); 
-                if (products != null) { 
-                    for (Product product : products) { 
-                        out.print("<p>" + product.getName() + " (Quantity: " + product.getQuantity() + ")</p>"); 
-                    } 
-                } 
-            %> 
-        </div> 
-        <button onclick="goBack()">Go back to menu</button> 
-    </div> 
- 
-    <script> 
-        function goBack() { 
-            window.location.href = '../Dynamic/menu.jsp'; 
-        } 
-    </script> 
-</body> 
+<div class="confirmation-container">
+    <div> <a href="/Dynamic/confirmation.jsp" class="logo">
+            <img src="../Images/pay2.jpg" alt="Food cuisine">
+          </a> 
+        </div>
+        <h1>Payment Successful!</h1>
+
+    <div class="order-details">
+        
+        <p><strong>Customer Name:</strong> <%= session.getAttribute("customerName") != null ? session.getAttribute("customerName") : "N/A" %></p>
+        <p><strong>Phone Number:</strong> <%= session.getAttribute("phoneNumber") != null ? session.getAttribute("phoneNumber") : "N/A" %></p>
+        <p><strong>Total Amount:</strong> Rs.<%= session.getAttribute("totalAmount") != null ? session.getAttribute("totalAmount") : 0 %></p>
+        <p><strong>Payment Status:</strong> <%= session.getAttribute("paymentStatus") != null ? session.getAttribute("paymentStatus") : "N/A" %></p>
+        
+        <div class="product-list">
+    <p><strong>Order Details:</strong></p>
+    <p>
+        <%= session.getAttribute("foodDetails") != null ? session.getAttribute("foodDetails").toString().replaceAll(";", ";<br>") : "No items in order." %>
+    </p>
+</div>
+    </div>
+
+    
+    <a href="/Dynamic/menu.jsp"><button>Go back to Menu</button></a>
+</div>
+
+</body>
 </html>

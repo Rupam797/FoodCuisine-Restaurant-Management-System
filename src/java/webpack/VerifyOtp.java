@@ -82,7 +82,8 @@ public class VerifyOtp extends HttpServlet {
                     oconn.close();
                 } catch (Exception e) {
                     e.printStackTrace();
-                    response.getWriter().println("<script>alert('Database error: Email already exist try with another email" + e.getMessage() + "'); window.location='/Dynamic/signup.jsp';</script>");
+                    response.getWriter().println("<script>alert('Database error: Email already exist try with another email');window.location='/Dynamic/signup.jsp';</script>" );
+                    
                 }
             } else {
                 // OTP does not match

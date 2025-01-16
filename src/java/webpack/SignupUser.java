@@ -74,7 +74,8 @@ public class SignupUser extends HttpServlet {
             message.setFrom(new InternetAddress(senderEmail));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
             message.setSubject("Your OTP for Signup");
-            message.setText("Your OTP is: " + otp);
+            message.setText("WELCOME TO OUR FOOD CUSINE"+","+"Your OTP is: " + otp);
+            
 
             Transport.send(message);
             return true;

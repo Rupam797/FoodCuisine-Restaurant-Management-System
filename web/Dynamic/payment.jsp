@@ -1,4 +1,5 @@
-
+<%@ page import="cartpack.Cart" %>
+<%@ page import="cartpack.CartItem" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -107,22 +108,38 @@
     </style>
 </head>
 <body>
+    <form action="/PaymentServlet" method="post">
     <div class="payment-container">
-       <div> <a href="../DynamicS/payment.jsp" class="logo">
+       <div> <a href="../Dynamic/payment.jsp" class="logo">
             <img src="../Images/pay.png" alt="Food cuisine">
           </a> 
         </div>
-        <div class="total-amount" id="total-amount">Total: ₹0</div>
+
+<%
+    Cart cart = (Cart) session.getAttribute("cart");
+    if (cart == null) {
+        out.println("<p>Your cart is empty.</p>");
+    } else {
+        int totalAmount = cart.getTotal();
+%>
+      <div class="total-amount" id="total-amount">Total Amount: ₹<%= totalAmount %></div>
+<%
+    }
+%>
+
+
+
         <div class="payment-section">
             <h2>Billing Details</h2>
+            
             <div class="form-group">
                 <label for="customer-name">Customer Name</label>
-                <input type="text" id="customer-name" placeholder="Enter your name">
+                <input type="text" id="customer"name="customer-name" placeholder="Enter your name">
                 <div class="error-message" id="customer-name-error">Enter your name</div>
             </div>
             <div class="form-group">
                 <label for="phone-number">Phone Number</label>
-                <input type="text" id="phone-number" placeholder="Enter your phone number" maxlength="10">
+                <input type="text" id="phone" name="phone-number" placeholder="Enter your phone number" maxlength="10">
                 <div class="error-message" id="phone-number-error">Enter a valid phone number</div>
             </div>
         </div>
@@ -157,70 +174,90 @@
         </div>
 
         <div class="payment-section">
-            <button onclick="confirmPayment()">Confirm Payment</button>
+            <button>Confirm Payment</button>
         </div>
+        
     </div>
 
-    <script>
-        function confirmPayment() {
-            let valid = true;
-                const elements = [
-                    { id: 'customer-name', regex: /\S/, errorMessageId: 'customer-name-error' },
-                    { id: 'phone-number', regex: /^\d{10}$/, errorMessageId: 'phone-number-error' },
-                    { id: 'card-holder-name', regex: /\S/, errorMessageId: 'card-holder-name-error' },
-                    { id: 'card-number', regex: /^\d{16}$/, errorMessageId: 'card-number-error' },
-                    { id: 'expiry', regex: /^(0[1-9]|1[0-2])\/\d{2}$/, errorMessageId: 'expiry-error' },
-                    { id: 'cvv', regex: /^\d{3}$/, errorMessageId: 'cvv-error' },
-                ];
-
-                elements.forEach(({ id, regex, errorMessageId }) => {
-                    const input = document.getElementById(id);
-                    const errorMessage = document.getElementById(errorMessageId);
-                    if (!regex.test(input.value.trim())) {
-                        input.classList.add('invalid');
-                        errorMessage.style.display = 'block';
-                        valid = false;
-                    } 
-                    else {
-                        input.classList.remove('invalid');
-                        errorMessage.style.display = 'none';
-                    }
-            });
-
-            if (!valid) return;
-
-            const customerName = document.getElementById('customer-name').value.trim();
-            const phoneNumber = document.getElementById('phone-number').value.trim();
-            const totalAmount = document.getElementById('total-amount').textContent;
-
-            alert('Payment successful!');
-            document.addEventListener("DOMContentLoaded", function() {
-    // Extract total amount from the URL query parameter
-    const urlParams = new URLSearchParams(window.location.search);
-    const totalAmount = urlParams.get('amount');
-    
-    // Check if amount is available and display it
-    if (totalAmount) {
-        // Display the total amount in the corresponding div
-        document.getElementById('total-amount').textContent = `Total: ₹${totalAmount}`;
-    } else {
-        console.error("Amount not found in the URL");
-    }
-});
-
- 
+    </form>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.querySelector("form");
+        
+        form.addEventListener("submit", function(event) {
+            let isValid = true;
             
-        }
+            // Validate Customer Name
+            const customerName = document.getElementById("customer");
+            const customerNameError = document.getElementById("customer-name-error");
+            if (customerName.value.trim() === "") {
+                customerNameError.style.display = "block";
+                isValid = false;
+            } else {
+                customerNameError.style.display = "none";
+            }
+            
+            // Validate Phone Number
+            const phoneNumber = document.getElementById("phone");
+            const phoneNumberError = document.getElementById("phone-number-error");
+            const phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(phoneNumber.value)) {
+                phoneNumberError.style.display = "block";
+                isValid = false;
+            } else {
+                phoneNumberError.style.display = "none";
+            }
+            
+            // Validate Card Holder Name
+            const cardHolderName = document.getElementById("card-holder-name");
+            const cardHolderNameError = document.getElementById("card-holder-name-error");
+            if (cardHolderName.value.trim() === "") {
+                cardHolderNameError.style.display = "block";
+                isValid = false;
+            } else {
+                cardHolderNameError.style.display = "none";
+            }
+            
+            // Validate Card Number (simple validation for 16 digits)
+            const cardNumber = document.getElementById("card-number");
+            const cardNumberError = document.getElementById("card-number-error");
+            const cardNumberRegex = /^[0-9]{16}$/;
+            if (!cardNumberRegex.test(cardNumber.value)) {
+                cardNumberError.style.display = "block";
+                isValid = false;
+            } else {
+                cardNumberError.style.display = "none";
+            }
+            
+            // Validate Expiry Date (MM/YY format)
+            const expiry = document.getElementById("expiry");
+            const expiryError = document.getElementById("expiry-error");
+            const expiryRegex = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
+            if (!expiryRegex.test(expiry.value)) {
+                expiryError.style.display = "block";
+                isValid = false;
+            } else {
+                expiryError.style.display = "none";
+            }
 
-        // Input restrictions
-        document.querySelectorAll('#phone-number, #card-number, #cvv').forEach(input => {
-                input.addEventListener('input', function() {
-                    this.value = this.value.replace(/\D/g, '');
-                });
-            });
+            // Validate CVV (3 digits)
+            const cvv = document.getElementById("cvv");
+            const cvvError = document.getElementById("cvv-error");
+            const cvvRegex = /^[0-9]{3}$/;
+            if (!cvvRegex.test(cvv.value)) {
+                cvvError.style.display = "block";
+                isValid = false;
+            } else {
+                cvvError.style.display = "none";
+            }
 
-
-    </script>
+            // If form is invalid, prevent submission
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+    });
+</script>
 
 </body>
 </html>

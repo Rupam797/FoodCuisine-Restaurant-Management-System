@@ -1,177 +1,165 @@
-/* page title styles */
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    text-align: left; /* Align all text to the left globally */
+}
+
+/* Page Title */
 #page__title {
-	padding-top: 3rem;
-	padding-bottom: 2rem;
+    background: url('../Images/banner.jpg') no-repeat center/cover;
+    color: black;
+    text-align: left; /* Ensure left alignment of the title */
+    padding: 3rem 0;
+    font-size: 2rem;
 }
-.page__title__text {
-	font-size: 2.2rem;
-	color: var(--black-1);
+
+.page_title_text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: left; /* Title alignment to left */
 }
-@media only screen and (min-width: 768px) {
-	#page__title {
-		padding-top: 5rem;
-		padding-bottom: 3rem;
-	}
-	.page__title__text {
-		font-size: 3.6rem;
-	}
+
+.container h1{
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: left;
 }
-/* Our Specials Menu Styles */
-#ourSpecials {
-	padding: 0;
+
+
+/* Button Styles */
+.top_menu_btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: left; /* Align text inside the button to the left */
 }
-.ourSpecials__title {
-	font-size: 1.8rem;
-	color: var(--black-1);
-	margin-bottom: 2rem;
-}
-.ourSpecials__wrapper {
-	display: flex;
-	gap: 1.5rem;
-	flex-direction: column;
-	max-width: 400px;
-}
-.ourSpecials__item {
-	flex: 1;
-	display: flex;
-	gap: 2rem;
-	background-color: var(--lightGreen-1);
-	padding: 1.5rem;
-	border-radius: 12px;
-}
-.ourSpecials__item__img,
-.ourSpecials__item__info {
-	flex: 1;
-}
-.ourSpecials__item__img {
-	border-radius: 12px;
-	overflow: hidden;
-}
-.ourSpecials__item__img img {
-	object-fit: cover;
-}
-.ourSpecials__item__title {
-	font-size: 2.3rem;
-	font-weight: 500;
-	margin-bottom: 1rem;
-	color: var(--black-1);
-	line-height: 1.2em;
-}
-.ourSpecials__item__price {
-	font-size: 1.8rem;
-	color: var(--green-1);
-	font-weight: 600;
-	margin-bottom: 1rem;
-}
-.ourSpecials__item__stars {
-	width: max-content;
-}
-@media only screen and (min-width: 768px) {
-	.ourSpecials__title {
-		font-size: 2.4rem;
-	}
-	.ourSpecials__wrapper {
-		flex-direction: row;
-		gap: 2rem;
-		max-width: none;
-	}
-	.ourSpecials__item {
-		padding: 3rem;
-		gap: 2rem;
-	}
-	.ourSpecials__item__title {
-		font-size: 2.6rem;
-		margin-bottom: 1.5rem;
-	}
-	.ourSpecials__item__price {
-		font-size: 2.4rem;
-		margin-bottom: 1.5rem;
-	}
-}
-@media only screen and (min-width: 1100px) {
-	.ourSpecials__item__img {
-		flex: 4;
-	}
-	.ourSpecials__item__info {
-		flex: 3;
-	}
+
+.top_menu_btn:hover {
+    background-color: #0056b3;
 }
 
 /* Dish Grid Styles */
 #dishGrid {
-    padding-bottom: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-#dishGrid:last-of-type {
-    padding-bottom: 10rem;
+    margin: 2rem 0;
 }
 
-/* To ensure a 3-item row layout */
+.dishGrid__title {
+    font-size: 3rem;
+    text-align: left; /* Title alignment to left */
+    margin-bottom: 1.5rem;
+}
+
 .dishGrid__wrapper {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 items per row */
-    gap: 2rem; /* Space between the items */
-    max-width: 100%;
+    grid-template-columns: repeat(3, 1fr); /* Limit to 3 items per row */
+    gap: 1.5rem;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Styling for each individual dish item */
 .dishGrid__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--lightGreen-1);
-    padding: 1.5rem;
-    border-radius: 12px;
-}
-
-.dishGrid__item__img {
-    width: 100%;
-    height: 200px;
-    border-radius: 12px;
+    background: #d6e5d8;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
     overflow: hidden;
+    text-align: left; /* Align text inside the dish item to the left */
+    padding: 10px;
 }
 
-.dishGrid__item__img img {
+.dishGrid_item_img img {
+    width: 100%;
+    height: 220px;
     object-fit: cover;
-    width: 100%;
-    height: 100%;
+    border-radius: 20px;
+    padding: 10px;
 }
 
-.dishGrid__item__info {
-    text-align: center;
-    margin-top: 1rem;
+.dishGrid_item_title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+    text-align: left; /* Title alignment to left */
 }
 
-.dishGrid__item__title {
-    font-size: 1.6rem;
-    font-weight: 500;
-    color: var(--black-1);
+.dishGrid_item_price {
+    color: #28a745;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+    text-align: left; /* Price alignment to left */
 }
 
-.dishGrid__item__price {
-    font-size: 1.4rem;
-    color: var(--green-1);
-    font-weight: 600;
-    margin-top: 0.5rem;
+.dishGrid_item_stars img {
+    width: 100px;
+    height: auto;
+    margin: 0.5rem 0;
 }
 
-.dishGrid__item__stars img {
-    width: 100px; /* Adjust size as needed */
-}
-
-.top_menu_btn {
-    margin-top: 1rem;
-    color: var(--green-1);
-    font-family: Poppins;
-    font-weight: 500;
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
     border-radius: 8px;
-    font-size: 1.2rem;
-    padding: 1rem 1.2rem;
-    color: var(--white-1);
-    background: var(--green-1);
-    width: 100%;
-    max-width: 200px;
-    align-self: center;
+    cursor: pointer;
+    text-align: left; /* Align button text to the left */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .ourSpecials__wrapper,
+    .dishGrid__wrapper {
+        grid-template-columns: 1fr; /* One item per row on small screens */
+    }
+
+    .ourSpecials_item_img img,
+    .dishGrid_item_img img {
+        height: 180px;
+    }
+
+    .ourSpecials_item_title,
+    .dishGrid_item_title {
+        font-size: 1.6rem;
+        text-align: left; /* Left-aligned title on small screens */
+    }
+
+    .ourSpecials_item_price,
+    .dishGrid_item_price {
+        font-size: 1.4rem;
+        text-align: left; /* Left-aligned price on small screens */
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+    .ourSpecials__wrapper,
+    .dishGrid__wrapper {
+        grid-template-columns: repeat(2, 1fr); /* Two items per row on medium screens */
+    }
+
+    .ourSpecials_item_img img,
+    .dishGrid_item_img img {
+        height: 220px;
+    }
+}
+
+@media (min-width: 1101px) {
+    .ourSpecials__wrapper,
+    .dishGrid__wrapper {
+        grid-template-columns: repeat(3, 1fr); /* Three items per row on large screens */
+    }
 }

@@ -45,3 +45,21 @@ AOS.init({
 //     item.setAttribute('data-aos', 'fade-up');
 //   })
 // }
+
+document.addEventListener("DOMContentLoaded", function() {
+  const cartIcon = document.querySelector(".icon-cart");
+  const cartPanel = document.getElementById("cart");
+  const cartOverlay = document.querySelector(".cart-overlay");
+
+  // Show the cart when the cart icon is clicked
+  cartIcon.addEventListener("click", function() {
+    cartPanel.classList.add("open");
+    cartOverlay.classList.add("show");
+  });
+
+  // Hide the cart when the overlay is clicked
+  cartOverlay.addEventListener("click", function() {
+    cartPanel.classList.remove("open");
+    cartOverlay.classList.remove("show");
+  });
+});

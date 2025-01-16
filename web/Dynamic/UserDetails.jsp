@@ -154,8 +154,16 @@
                 }
             %>
             <td>
-                <button class="edit">Edit</button>
-                <button class="delete">Delete</button>
+                <form action="/Dynamic/EditUser.jsp" method="get" style="display:inline;">
+                    <input type="hidden" name="userId" value="<%=ors.getString(1)%>">
+                    <input type="hidden" name="username" value="<%=ors.getString(2)%>">
+                    <input type="hidden" name="email" value="<%=ors.getString(3)%>">
+                    <button type="submit" class="edit">Edit</button>
+                </form>
+                <form action="/DeleteUserServlet" method="post" style="display:inline;">
+                    <input type="hidden" name="userId" value="<%=ors.getString(1)%>">
+                    <button type="submit" class="delete">Delete</button>
+                </form>
             </td>
         </tr>
         <%

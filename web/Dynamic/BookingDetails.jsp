@@ -161,19 +161,7 @@
                 </form>
 
                 <!-- EDIT FORM -->
-                <form action="EditBooking.jsp" method="get" style="display:inline;">
-                    <input type="hidden" name="bookingId" value="<%=ors.getString("BOOKING_ID")%>">
-                    <button class="edit" type="submit">Edit</button>
-                </form>
-            </td><td>
-                <!-- DELETE FORM -->
-                <form action="/DeleteBookingServlet" method="post" style="display:inline;">
-                    <input type="hidden" name="bookingId" value="<%=ors.getString("BOOKING_ID")%>">
-                    <button class="delete" type="submit">Delete</button>
-                </form>
-
-                <!-- EDIT FORM -->
-                <form action="EditBooking.jsp" method="get" style="display:inline;">
+                <form action="/EditBooking.jsp" method="get" style="display:inline;">
                     <input type="hidden" name="bookingId" value="<%=ors.getString("BOOKING_ID")%>">
                     <button class="edit" type="submit">Edit</button>
                 </form>

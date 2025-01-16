@@ -219,6 +219,16 @@
                 <p>Manage and view all table bookings.</p>
             </a>
         </div>
+        
+        <!-- Order Details Card -->
+        <div class="card">
+            <a href="../Dynamic/OrderDetails.jsp">
+                <img src="../Images/Order.jpg" alt="Order Details">
+                <h1>Order Details</h1>
+                <p>Manage and view all food orders.</p>
+            </a>
+        </div>
+        
     </div>
 
     <!-- Footer Section -->
