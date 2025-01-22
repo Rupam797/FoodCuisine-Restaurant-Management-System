@@ -35,7 +35,7 @@ public class DeleteBookingServlet extends HttpServlet {
 
             // 7. Redirect back to the JSP page to refresh the data
             if (rowsAffected > 0) {
-                response.sendRedirect("booking.jsp"); // assuming your JSP is called booking.jsp
+                response.sendRedirect("/Dynamic/BookingDetails.jsp"); // assuming your JSP is called booking.jsp
             } else {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Booking not found");
             }

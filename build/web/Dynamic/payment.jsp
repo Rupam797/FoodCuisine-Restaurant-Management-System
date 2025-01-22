@@ -169,7 +169,7 @@
         </div>
 
         <div class="payment-section">
-            <h2>OR Pay Using UPI</h2>
+            <h2>QR Pay Using UPI</h2>
             <img src="../Images/QR.jpeg" alt="QR Code" class="qr-code">
         </div>
 

@@ -19,7 +19,7 @@ public class PaymentServlet extends HttpServlet {
     private static final String DB_PASSWORD = "GIRI"; // Update with your Oracle DB password
 
     // Email configuration
-    private static final String SMTP_HOST = "smtp.your-email-provider.com"; // Change to your SMTP server
+    private static final String SMTP_HOST = "smtp.gmail.com"; // Change to your SMTP server
     private static final String SMTP_PORT = "587"; // SMTP port (use 465 for SSL)
     private static final String EMAIL_USERNAME = "cusinefood0@gmail.com"; // Your email
     private static final String EMAIL_PASSWORD = "mzytfwiwuoowfuqp"; // Your email password

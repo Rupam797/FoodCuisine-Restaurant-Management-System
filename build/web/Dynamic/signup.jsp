@@ -82,7 +82,7 @@
     </div>
 
     <div class="links">
-      <a href="Email_forgot_password.jsp">Forgot Password</a>
+      <a href="../Dynamic/login.jsp">Already Registered?</a>
       <a href="../Dynamic/login.jsp">Login</a>
     </div>
     <div class="input-field button">

@@ -161,7 +161,7 @@
                 </form>
 
                 <!-- EDIT FORM -->
-                <form action="/EditBooking.jsp" method="get" style="display:inline;">
+                <form action="/Dynamic/EditBooking.jsp" method="get" style="display:inline;">
                     <input type="hidden" name="bookingId" value="<%=ors.getString("BOOKING_ID")%>">
                     <button class="edit" type="submit">Edit</button>
                 </form>

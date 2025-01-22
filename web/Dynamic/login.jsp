@@ -66,7 +66,7 @@
     </div>
    
     <div class="links">
-      <a class="forgot" href="/Dynamic/forgetpasswordotp.jsp">Forgot Password</a>
+      <a class="forgot" href="/Dynamic/ForgotPassword.jsp">Forgot Password</a>
     </div>
     <div class="input-field button">
       <input type="submit" value="Login Now" />

@@ -114,7 +114,7 @@ background-repeat: no-repeat;
         %>
 
         <!-- OTP Verification Form -->
-        <form action="/VerifyOtp" method="post">
+        <form action="/VerifyOtpVerification" method="post">
             <label for="otp"><b>Enter OTP:</b></label>
             <input type="text" name="otp" id="otp" required>
 

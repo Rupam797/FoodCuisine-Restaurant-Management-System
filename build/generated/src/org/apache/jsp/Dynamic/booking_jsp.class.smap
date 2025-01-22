@@ -1,0 +1,28 @@
+SMAP
+booking_jsp.java
+JSP
+*S JSP
+*F
++ 0 booking.jsp
+Dynamic/booking.jsp
++ 1 navbar.jsp
+Dynamic/navbar.jsp
++ 2 footer.jsp
+Dynamic/footer.jsp
+*L
+1,24:51
+1#1,10:75
+10,2:85
+13,2:88
+14,7:90
+20,40:97
+60:137,3
+61,2:140
+63:142,3
+64,3:145
+67,2:148,3
+69,33:154
+24#0,64:187
+1#2,117:251
+87#0,26:367
+*E
