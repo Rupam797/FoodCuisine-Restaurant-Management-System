@@ -21,12 +21,15 @@ Food Cuisine is a full-stack web application built using **JSP and Servlets** th
 ## Installation
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/food-cuisine.git
+   git clone https://github.com/rupam797/food-cuisine.git
    ```
 2. Import the project into NetBeans.
 3. Configure the **Oracle 10g** database and update database credentials.
 4. Deploy the project on a **Tomcat server**.
 5. Run the application and access it via the browser.
+
+## Website Link
+Visit the website: [Food Cuisine](https://your-website-link.com)
 
 ## Contribution Guidelines
 Contributions are welcome! To contribute:
@@ -49,4 +52,4 @@ Contributions are welcome! To contribute:
 This project is licensed under the **MIT License**.
 
 ## Contact
-For any inquiries or support, please reach out via GitHub issues or email at **your-email@example.com**.
+For any inquiries or support, please reach out via GitHub issues or email at **ruapmgiri318@gmail.com**.
