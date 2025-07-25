@@ -82,5 +82,3 @@ Contributions are welcome! To contribute:
 ## License
 This project is licensed under the **MIT License**.
 
-## Contact
-For any inquiries or support, please reach out via GitHub issues or email at **ruapmgiri318@gmail.com**.
