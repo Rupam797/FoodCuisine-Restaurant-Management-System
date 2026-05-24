@@ -74,7 +74,7 @@
 <body>
     <div class="container">
         <h1>Add Food Item</h1>
-        <form id="foodForm" action="/AddFood" method="post" enctype="multipart/form-data">
+        <form id="foodForm" action="${pageContext.request.contextPath}/admin/foods" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="food_id">Food ID:</label>
                 <input type="number" id="food_id" name="fid" required>

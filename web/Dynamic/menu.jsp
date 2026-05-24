@@ -1,9 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*" %>
-<%@ page import="oracle.jdbc.*" %>
-<%@page import="cartpack.CartItem"%>
-<%@page import="cartpack.Cart"%>
-<%@page import="java.util.*, javax.servlet.http.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.rms.model.Cart, com.rms.model.CartItem" %>
+<%@ page import="java.util.*" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +47,7 @@
                         </div>
                         <div class="nav_list_wrapper">
                             <li><a class="nav__link" href="../Dynamic/Home.jsp">Home</a></li>
-                            <li><a class="nav__link" href="../Dynamic/menu.jsp">Menu</a></li>
+                            <li><a class="nav__link" href="${pageContext.request.contextPath}/menu">Menu</a></li>
                             <li><a class="nav__link" href="../Dynamic/about.jsp">About</a></li>
                             <li><a class="nav__link" href="../Dynamic/contact.jsp">Contact</a></li>
                             <li><a class="nav__link" href="../Dynamic/booking.jsp">Book Table</a></li>
@@ -69,213 +67,121 @@
     </div>
 <!-- End Nav Section -->
 
- <!-- Start top Dishes -->
+ <!-- Start Top Dishes -->
  <section id="dishGrid" data-aos="fade-down">
   <div class="container">
-       <h1 class="page__title__text">
-        Explore Our Menu
-      </h1>
+       <h1 class="page__title__text">Explore Our Menu</h1>
     <h2 class="dishGrid__title">Top Dishes</h2>
     <div class="dishGrid__wrapper">
-      <%
-        Connection conn = null;
-        Statement stmt = null;
-        ResultSet rs = null;
-        try {
-            Class.forName("oracle.jdbc.OracleDriver");
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "RUPAM", "GIRI");
-            String query = "SELECT FOOD_ID, FOOD_NAME, FOOD_PRICE, FOOD_IMG FROM FOODS WHERE FOOD_CATEGORY = 'Top Dishes'";
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                int foodId = rs.getInt("FOOD_ID");
-                String foodName = rs.getString("FOOD_NAME");
-                int foodPrice = rs.getInt("FOOD_PRICE");
-                String foodImg = rs.getString("FOOD_IMG");
-      %>
-      <div class="dishGrid__item" data-product-id="<%= foodId %>" data-product-name="<%= foodName %>" data-product-price="<%= foodPrice %>">
+      <c:forEach var="food" items="${topDishes}">
+      <div class="dishGrid__item" data-product-id="${food.foodId}" data-product-name="${food.foodName}" data-product-price="${food.foodPrice}">
         <div class="dishGrid_item_img">
-          <img src="../<%= foodImg %>" alt="<%= foodName %>">
+          <img src="../${food.foodImg}" alt="${food.foodName}">
         </div>
         <div class="dishGrid_item_info">
-          <h3 class="dishGrid_item_title"><%= foodName %></h3>
+          <h3 class="dishGrid_item_title">${food.foodName}</h3>
           <div class="dishGrid_item_stars">
               <img src="../Images/3star.png" alt="3 star">
           </div>
-          <h3 class="dishGrid_item_price">₹<%= foodPrice %></h3>
-          <form action="/AddToCartServlet" method="post">
-              <input type="hidden" name="foodId" value="<%= foodId %>">
+          <h3 class="dishGrid_item_price">₹${food.foodPrice}</h3>
+          <form action="${pageContext.request.contextPath}/AddToCartServlet" method="post">
+              <input type="hidden" name="foodId" value="${food.foodId}">
           <button class="top_menu_btn" type="submit">Add to Cart</button>
            </form>
         </div>
       </div>
-      <% 
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (rs != null) rs.close();
-            if (stmt != null) stmt.close();
-            if (conn != null) conn.close();
-        }
-      %>
+      </c:forEach>
     </div>
   </div>
 </section>
-<!-- End top Dishes -->
- <!--  Breakfast Dishes -->
+<!-- End Top Dishes -->
+
+ <!-- Breakfast Dishes -->
  <section id="dishGrid" data-aos="fade-down">
   <div class="container">
     <h2 class="dishGrid__title">Breakfast</h2>
     <div class="dishGrid__wrapper">
-      <%
-    
-        try {
-            Class.forName("oracle.jdbc.OracleDriver");
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "RUPAM", "GIRI");
-            String query = "SELECT FOOD_ID, FOOD_NAME, FOOD_PRICE, FOOD_IMG FROM FOODS WHERE FOOD_CATEGORY = 'Breakfast'";
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                int foodId = rs.getInt("FOOD_ID");
-                String foodName = rs.getString("FOOD_NAME");
-                int foodPrice = rs.getInt("FOOD_PRICE");
-                String foodImg = rs.getString("FOOD_IMG");
-      %>
-      <div class="dishGrid__item" data-product-id="<%= foodId %>" data-product-name="<%= foodName %>" data-product-price="<%= foodPrice %>">
+      <c:forEach var="food" items="${breakfast}">
+      <div class="dishGrid__item" data-product-id="${food.foodId}" data-product-name="${food.foodName}" data-product-price="${food.foodPrice}">
         <div class="dishGrid_item_img">
-          <img src="../<%= foodImg %>" alt="<%= foodName %>">
+          <img src="../${food.foodImg}" alt="${food.foodName}">
         </div>
         <div class="dishGrid_item_info">
-          <h3 class="dishGrid_item_title"><%= foodName %></h3>
+          <h3 class="dishGrid_item_title">${food.foodName}</h3>
           <div class="dishGrid_item_stars">
               <img src="../Images/3star.png" alt="3 star">
           </div>
-          <h3 class="dishGrid_item_price">₹<%= foodPrice %></h3>
-          <form action="/AddToCartServlet" method="post">
-              <input type="hidden" name="foodId" value="<%= foodId %>">
+          <h3 class="dishGrid_item_price">₹${food.foodPrice}</h3>
+          <form action="${pageContext.request.contextPath}/AddToCartServlet" method="post">
+              <input type="hidden" name="foodId" value="${food.foodId}">
           <button class="top_menu_btn" type="submit">Add to Cart</button>
            </form>
         </div>
       </div>
-      <% 
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (rs != null) rs.close();
-            if (stmt != null) stmt.close();
-            if (conn != null) conn.close();
-        }
-      %>
+      </c:forEach>
     </div>
   </div>
 </section>
-
 <!-- End Breakfast Dishes -->
+
 <!-- Lunch Dishes -->
  <section id="dishGrid" data-aos="fade-down">
   <div class="container">
     <h2 class="dishGrid__title">Lunch</h2>
     <div class="dishGrid__wrapper">
-      <%
-     
-        try {
-            Class.forName("oracle.jdbc.OracleDriver");
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "RUPAM", "GIRI");
-            String query = "SELECT FOOD_ID, FOOD_NAME, FOOD_PRICE, FOOD_IMG FROM FOODS WHERE FOOD_CATEGORY = 'Lunch'";
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                int foodId = rs.getInt("FOOD_ID");
-                String foodName = rs.getString("FOOD_NAME");
-                int foodPrice = rs.getInt("FOOD_PRICE");
-                String foodImg = rs.getString("FOOD_IMG");
-      %>
-      <div class="dishGrid__item" data-product-id="<%= foodId %>" data-product-name="<%= foodName %>" data-product-price="<%= foodPrice %>">
+      <c:forEach var="food" items="${lunch}">
+      <div class="dishGrid__item" data-product-id="${food.foodId}" data-product-name="${food.foodName}" data-product-price="${food.foodPrice}">
         <div class="dishGrid_item_img">
-          <img src="../<%= foodImg %>" alt="<%= foodName %>">
+          <img src="../${food.foodImg}" alt="${food.foodName}">
         </div>
         <div class="dishGrid_item_info">
-          <h3 class="dishGrid_item_title"><%= foodName %></h3>
+          <h3 class="dishGrid_item_title">${food.foodName}</h3>
           <div class="dishGrid_item_stars">
               <img src="../Images/3star.png" alt="3 star">
           </div>
-          <h3 class="dishGrid_item_price">₹<%= foodPrice %></h3>
-          <form action="/AddToCartServlet" method="post">
-              <input type="hidden" name="foodId" value="<%= foodId %>">
+          <h3 class="dishGrid_item_price">₹${food.foodPrice}</h3>
+          <form action="${pageContext.request.contextPath}/AddToCartServlet" method="post">
+              <input type="hidden" name="foodId" value="${food.foodId}">
           <button class="top_menu_btn" type="submit">Add to Cart</button>
            </form>
         </div>
       </div>
-      <% 
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (rs != null) rs.close();
-            if (stmt != null) stmt.close();
-            if (conn != null) conn.close();
-        }
-      %>
+      </c:forEach>
     </div>
   </div>
 </section>
+<!-- End Lunch Dishes -->
 
-  
-  <!-- End Lunch Dishes -->
-  <!-- Dinner Dishes -->
+<!-- Dinner Dishes -->
 <section id="dishGrid" data-aos="fade-down">
   <div class="container">
     <h2 class="dishGrid__title">Dinner</h2>
     <div class="dishGrid__wrapper">
-      <%
-        
-        try {
-            Class.forName("oracle.jdbc.OracleDriver");
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "RUPAM", "GIRI");
-            String query = "SELECT FOOD_ID, FOOD_NAME, FOOD_PRICE, FOOD_IMG FROM FOODS WHERE FOOD_CATEGORY = 'Dinner'";
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                int foodId = rs.getInt("FOOD_ID");
-                String foodName = rs.getString("FOOD_NAME");
-                int foodPrice = rs.getInt("FOOD_PRICE");
-                String foodImg = rs.getString("FOOD_IMG");
-      %>
-      <div class="dishGrid__item" data-product-id="<%= foodId %>" data-product-name="<%= foodName %>" data-product-price="<%= foodPrice %>">
+      <c:forEach var="food" items="${dinner}">
+      <div class="dishGrid__item" data-product-id="${food.foodId}" data-product-name="${food.foodName}" data-product-price="${food.foodPrice}">
         <div class="dishGrid_item_img">
-          <img src="../<%= foodImg %>" alt="<%= foodName %>">
+          <img src="../${food.foodImg}" alt="${food.foodName}">
         </div>
         <div class="dishGrid_item_info">
-          <h3 class="dishGrid_item_title"><%= foodName %></h3>
+          <h3 class="dishGrid_item_title">${food.foodName}</h3>
           <div class="dishGrid_item_stars">
               <img src="../Images/3star.png" alt="3 star">
           </div>
-          <h3 class="dishGrid_item_price">₹<%= foodPrice %></h3>
-          <form action="/AddToCartServlet" method="post">
-              <input type="hidden" name="foodId" value="<%= foodId %>">
+          <h3 class="dishGrid_item_price">₹${food.foodPrice}</h3>
+          <form action="${pageContext.request.contextPath}/AddToCartServlet" method="post">
+              <input type="hidden" name="foodId" value="${food.foodId}">
           <button class="top_menu_btn" type="submit">Add to Cart</button>
            </form>
         </div>
       </div>
-      <% 
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (rs != null) rs.close();
-            if (stmt != null) stmt.close();
-            if (conn != null) conn.close();
-        }
-      %>
+      </c:forEach>
     </div>
   </div>
 </section>
- 
-  <!-- End Dinner Dishes -->
+<!-- End Dinner Dishes -->
   
  <%@include file="footer.jsp" %>
+
  <!-- Sliding Cart Section -->
     <div id="slidingCart" class="sliding-cart">
         <div class="cart-header">
@@ -284,8 +190,7 @@
         </div>
         <div class="cart-container">
             <%
-                HttpSession ses = request.getSession();
-                Cart cart = (Cart) ses.getAttribute("cart");
+                Cart cart = (Cart) session.getAttribute("cart");
                 if (cart != null && !cart.getItems().isEmpty()) {
                     for (CartItem item : cart.getItems()) {
             %>
@@ -295,7 +200,7 @@
                                 <h3><%= item.getName() %></h3>
                                 <p>Price: ₹<%= item.getPrice() %></p>
                             </div>
-                           <form action="/CartServlet" method="post">
+                           <form action="${pageContext.request.contextPath}/CartServlet" method="post">
                                 <input type="hidden" name="foodId" value="<%= item.getId() %>">
                                 <button name="action" value="remove" class="remove-btn">Remove</button>
                                 <button name="action" value="increase" class="plus">+</button>
@@ -312,7 +217,7 @@
             %>
             <div class="total">
                 <h3>Total: ₹<%= cart != null ? cart.getTotal() : 0 %></h3>
-                <form action="/CheckoutServlet" method="post">
+                <form action="${pageContext.request.contextPath}/CheckoutServlet" method="post">
                     <button type="submit">Checkout</button>
                 </form>
             </div>

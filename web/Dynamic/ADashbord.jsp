@@ -173,10 +173,8 @@
                 <span>Admin Dashboard</span>
             </div>
             <div class="logout">
-                <form action="../Dynamic/AdminLogout" method="post">
-                    <button type="submit" id="btn" name="logout-submit">
-                        <a href="../Dynamic/login.jsp">Logout</a>
-                    </button>
+                <form action="${pageContext.request.contextPath}/Logout" method="post">
+                    <button type="submit" id="btn" name="logout-submit">Logout</button>
                 </form>
             </div>
         </div>
@@ -186,7 +184,7 @@
     <div class="container">
         <!-- User Details Card -->
         <div class="card">
-            <a href="../Dynamic/UserDetails.jsp">
+            <a href="${pageContext.request.contextPath}/admin/users">
                 <img src="../Images/user.jpg" alt="User Details">
                 <h1>User Details</h1>
                 <p>Manage user accounts, roles, and permissions.</p>
@@ -195,7 +193,7 @@
 
         <!-- Food Details Card -->
         <div class="card">
-            <a href="../Dynamic/FoodDetails.jsp">
+            <a href="${pageContext.request.contextPath}/admin/foods">
                 <img src="../Images/image.png" alt="Food Details">
                 <h1>Food Details</h1>
                 <p>View and manage food items and categories.</p>
@@ -204,7 +202,7 @@
 
         <!-- Add Food Card -->
         <div class="card">
-            <a href="../Dynamic/AddFood.jsp">
+            <a href="${pageContext.request.contextPath}/Dynamic/AddFood.jsp">
                 <img src="../Images/add.png" alt="Add Food">
                 <h1>Add Food</h1>
                 <p>Add new food items to the system.</p>
@@ -213,7 +211,7 @@
 
         <!-- Booking Details Card -->
         <div class="card">
-            <a href="../Dynamic/BookingDetails.jsp">
+            <a href="${pageContext.request.contextPath}/admin/bookings">
                 <img src="../Images/table.png" alt="Booking Details">
                 <h1>Booking Details</h1>
                 <p>Manage and view all table bookings.</p>
@@ -222,7 +220,7 @@
         
         <!-- Order Details Card -->
         <div class="card">
-            <a href="../Dynamic/OrderDetails.jsp">
+            <a href="${pageContext.request.contextPath}/admin/orders">
                 <img src="../Images/Order.jpg" alt="Order Details">
                 <h1>Order Details</h1>
                 <p>Manage and view all food orders.</p>

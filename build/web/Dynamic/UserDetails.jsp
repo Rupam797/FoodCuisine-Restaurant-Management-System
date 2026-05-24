@@ -1,15 +1,11 @@
-<%@page import="java.sql.DriverManager"%>
-<%@page import="oracle.jdbc.OracleResultSetMetaData"%>
-<%@page import="oracle.jdbc.OracleResultSet"%>
-<%@page import="oracle.jdbc.OraclePreparedStatement"%>
-<%@page import="oracle.jdbc.OracleConnection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Displaying Records from Oracle</title>
+    <title>User Details | Admin</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -90,99 +86,53 @@
             padding: 10px 0;
             color: #777;
         }
-
     </style>
-    <%!
-        // STEP 3: DECLARING OBJECTS AND VARIABLES
-        OracleConnection oconn;
-        OraclePreparedStatement ops;
-        OracleResultSet ors;
-        OracleResultSetMetaData orsmd;
-        int counter, reccounter, colcounter;
-    %>
-    <%
-    // STEP 4: REGISTRATION OF ORACLE DRIVER
-    DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-
-    // STEP 5: INSTANTIATING THE CONNECTION
-    oconn = 
-            (OracleConnection)
-            DriverManager.getConnection
-    ("jdbc:oracle:thin:@localhost:1521:orcl", "RUPAM", "GIRI");
-
-    // STEP 6: INSTANTIATING THE STATEMENT OBJECT
-    ops = (OraclePreparedStatement)oconn.prepareCall("SELECT * FROM USERS");
-
-    // STEP 7: FILLING UP THE DATABASE RECORDS IN A TEMPORARY CONTAINER
-    ors = (OracleResultSet)ops.executeQuery();
-
-    // STEP 8: GETTING THE COLUMNS INFORMATION(METADATA)
-    orsmd = (OracleResultSetMetaData)ors.getMetaData();
-    %>
 </head>
 <body>
     <h1>User Details</h1>
-    <!--STEP 1: BASIC STRUCTURE OF A TABLE-->
     <table>
         <thead>
             <tr>
-                <%
-                    // STEP 9: BRINGING THE TABLE HEADINGS
-                    for(counter = 1; counter <= orsmd.getColumnCount(); counter++)
-                    {
-                %>
-                <th><%=orsmd.getColumnName(counter)%></th>
-                <%
-                    }
-                %>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>AGE</th>
+                <th>GENDER</th>
+                <th>ROLE</th>
                 <th>ACTION</th>
             </tr>
         </thead>
         <tbody>
-        <%
-            // STEP 10: BRINGING ALL THE RECORDS AND DISPLAYING AS TABLE ROWS
-            while(ors.next() == true)
-            {
-        %>
+        <c:forEach var="user" items="${users}">
         <tr>
-            <%
-               for(counter = 1; counter <= orsmd.getColumnCount(); counter++)
-                {
-            %>
-            <td><%=ors.getString(counter)%></td>
-            <%
-                }
-            %>
+            <td>${user.id}</td>
+            <td>${user.name}</td>
+            <td>${user.email}</td>
+            <td>${user.age}</td>
+            <td>${user.gender}</td>
+            <td>${user.role}</td>
             <td>
-                <form action="/Dynamic/EditUser.jsp" method="get" style="display:inline;">
-                    <input type="hidden" name="userId" value="<%=ors.getString(1)%>">
-                    <input type="hidden" name="username" value="<%=ors.getString(2)%>">
-                    <input type="hidden" name="email" value="<%=ors.getString(3)%>">
+                <form action="${pageContext.request.contextPath}/Dynamic/EditUser.jsp" method="get" style="display:inline;">
+                    <input type="hidden" name="email" value="${user.email}">
+                    <input type="hidden" name="name" value="${user.name}">
+                    <input type="hidden" name="age" value="${user.age}">
+                    <input type="hidden" name="gender" value="${user.gender}">
                     <button type="submit" class="edit">Edit</button>
                 </form>
-                <form action="/DeleteUserServlet" method="post" style="display:inline;">
-                    <input type="hidden" name="userId" value="<%=ors.getString(1)%>">
+                <form action="${pageContext.request.contextPath}/admin/users" method="post" style="display:inline;">
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="email" value="${user.email}">
                     <button type="submit" class="delete">Delete</button>
                 </form>
             </td>
         </tr>
-        <%
-            }
-        %>
+        </c:forEach>
         </tbody>
         <tfoot>
             <tr>
-                <th colspan="10">End of Records</th>
+                <th colspan="7">End of Records</th>
             </tr>
         </tfoot>
     </table>
-
-    <%
-    // STEP 11: CLOSING THE CONNECTIONS
-    ors.close();
-    ops.close();
-    oconn.close();
-    %>
-
 </body>
 </html>

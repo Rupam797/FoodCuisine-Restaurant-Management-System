@@ -1,5 +1,4 @@
-<%@ page import="java.sql.*" %>
-<%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +31,7 @@
             margin: 10px 0 5px;
         }
 
-        input[type="text"], input[type="date"], input[type="number"] {
+        input[type="text"], input[type="date"] {
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
@@ -57,43 +56,18 @@
 </head>
 <body>
     <h1>Edit Booking</h1>
-    <%
-        String bookingId = request.getParameter("bookingId");
-        String bookingDate = "";
-        String customerName = "";
-        String tableNo = "";
-
-        try {
-            Class.forName("oracle.jdbc.OracleDriver");
-            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "RUPAM", "GIRI");
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM BOOKING WHERE BOOKING_ID = ?");
-            ps.setString(1, bookingId);
-            ResultSet rs = ps.executeQuery();
-            
-            if (rs.next()) {
-                bookingDate = rs.getString("BOOKING_DATE");
-                customerName = rs.getString("CUSTOMER_NAME");
-                tableNo = rs.getString("TABLE_NO");
-            }
-            
-            rs.close();
-            ps.close();
-            conn.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    %>
-    <form action="/EditBooking" method="post">
-        <input type="hidden" name="bookingId" value="<%= bookingId %>">
+    <form action="${pageContext.request.contextPath}/admin/bookings" method="post">
+        <input type="hidden" name="action" value="edit">
+        <input type="hidden" name="bookingId" value="${booking.bookingId}">
 
         <label for="bookingDate">Booking Date:</label>
-        <input type="date" id="bookingDate" name="bookingDate" value="<%= bookingDate %>" required>
+        <input type="date" id="bookingDate" name="bookingDate" value="${booking.bookingDate}" required>
 
         <label for="customerName">Customer Name:</label>
-        <input type="text" id="customerName" name="customerName" value="<%= customerName %>" required>
+        <input type="text" id="customerName" name="customerName" value="${booking.firstName}" required>
 
-        <label for="tableNo">Table No:</label>
-        <input type="number" id="tableNo" name="tableNo" value="<%= tableNo %>" required>
+        <label for="tableNo">Table No / Type:</label>
+        <input type="text" id="tableNo" name="tableNo" value="${booking.tableType}" required>
 
         <button type="submit">Update</button>
     </form>

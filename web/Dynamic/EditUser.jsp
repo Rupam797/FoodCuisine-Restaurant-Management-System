@@ -1,4 +1,3 @@
-<%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,20 +50,21 @@
 </head>
 <body>
     <h1>Edit User</h1>
-    <form action="/EditUser" method="post">
-        <input type="hidden" name="email" value="<%= request.getParameter("email") %>">
+    <form action="${pageContext.request.contextPath}/admin/users" method="post">
+        <input type="hidden" name="action" value="edit">
+        <input type="hidden" name="email" value="${param.email}">
 
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="<%= request.getParameter("name") %>" required>
+        <input type="text" id="name" name="name" value="${param.name}" required>
 
         <label for="age">Age:</label>
-        <input type="number" id="age" name="age" value="<%= request.getParameter("age") %>" required>
+        <input type="number" id="age" name="age" value="${param.age}" required>
 
         <label for="gender">Gender:</label>
         <select id="gender" name="gender" required>
-            <option value="Male" <%= "Male".equals(request.getParameter("gender")) ? "selected" : "" %>>Male</option>
-            <option value="Female" <%= "Female".equals(request.getParameter("gender")) ? "selected" : "" %>>Female</option>
-            <option value="Other" <%= "Other".equals(request.getParameter("gender")) ? "selected" : "" %>>Other</option>
+            <option value="Male" ${param.gender == 'Male' ? 'selected' : ''}>Male</option>
+            <option value="Female" ${param.gender == 'Female' ? 'selected' : ''}>Female</option>
+            <option value="Other" ${param.gender == 'Other' ? 'selected' : ''}>Other</option>
         </select>
 
         <button type="submit">Update</button>

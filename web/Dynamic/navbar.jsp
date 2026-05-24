@@ -72,7 +72,7 @@
                   <li><a href="../Dynamic/Complain.jsp"><i class="fa-solid fa-clipboard"></i>&nbsp;&nbsp;Complain Register</a></li>
                   <li><a href="../Dynamic/Feedback.jsp"><i class="fa-solid fa-comment"></i>&nbsp;&nbsp;Feedback</a></li>
                   <li><a href="../Dynamic/contact.jsp"><i class="fa-solid fa-address-book"></i>&nbsp;&nbsp;Contact Us</a></li>
-                  <li><a href="../Pages/index.html"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;Logout</a></li>
+                  <li><a href="${pageContext.request.contextPath}/Logout"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;Logout</a></li>
                 </ul>
               </div>
             </li>
