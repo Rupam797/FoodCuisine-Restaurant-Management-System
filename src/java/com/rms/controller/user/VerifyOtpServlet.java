@@ -22,7 +22,10 @@ public class VerifyOtpServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
 
         if (session == null) {
-            response.getWriter().println("<script>alert('Session expired. Please try again.'); window.location='" + request.getContextPath() + "/Dynamic/signup.jsp';</script>");
+            HttpSession newSession = request.getSession(true);
+            newSession.setAttribute("toastMessage", "Session expired. Please try again.");
+            newSession.setAttribute("toastType", "error");
+            response.sendRedirect(request.getContextPath() + "/Dynamic/signup.jsp");
             return;
         }
 
@@ -30,7 +33,9 @@ public class VerifyOtpServlet extends HttpServlet {
         String userOtpStr = request.getParameter("otp");
 
         if (sessionOtp == null) {
-            response.getWriter().println("<script>alert('Session expired. Please try again.'); window.location='" + request.getContextPath() + "/Dynamic/signup.jsp';</script>");
+            session.setAttribute("toastMessage", "Session expired. Please try again.");
+            session.setAttribute("toastType", "error");
+            response.sendRedirect(request.getContextPath() + "/Dynamic/signup.jsp");
             return;
         }
 
@@ -63,15 +68,23 @@ public class VerifyOtpServlet extends HttpServlet {
                     session.removeAttribute("otp");
                     session.removeAttribute("tempUser");
 
-                    response.getWriter().println("<script>alert('Registration successful!'); window.location='" + request.getContextPath() + "/Dynamic/Home.jsp';</script>");
+                    session.setAttribute("toastMessage", "Registration successful!");
+                    session.setAttribute("toastType", "success");
+                    response.sendRedirect(request.getContextPath() + "/Dynamic/Home.jsp");
                 } else {
-                    response.getWriter().println("<script>alert('Database error: Email already exists. Try another email.'); window.location='" + request.getContextPath() + "/Dynamic/signup.jsp';</script>");
+                    session.setAttribute("toastMessage", "Email already exists. Try another email.");
+                    session.setAttribute("toastType", "error");
+                    response.sendRedirect(request.getContextPath() + "/Dynamic/signup.jsp");
                 }
             } else {
-                response.getWriter().println("<script>alert('Invalid OTP. Please try again.'); window.location='" + request.getContextPath() + "/Dynamic/otpVerification.jsp';</script>");
+                session.setAttribute("toastMessage", "Invalid OTP. Please try again.");
+                session.setAttribute("toastType", "error");
+                response.sendRedirect(request.getContextPath() + "/Dynamic/otpVerification.jsp");
             }
         } catch (NumberFormatException e) {
-            response.getWriter().println("<script>alert('Invalid OTP format.'); window.location='" + request.getContextPath() + "/Dynamic/otpVerification.jsp';</script>");
+            session.setAttribute("toastMessage", "Invalid OTP format.");
+            session.setAttribute("toastType", "error");
+            response.sendRedirect(request.getContextPath() + "/Dynamic/otpVerification.jsp");
         }
     }
 }

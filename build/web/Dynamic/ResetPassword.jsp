@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Reset Password</title>
+    <link rel="stylesheet" href="../Styles/toast.css">
+    <script src="../Js/toast.js"></script>
     <style>
         * {
             margin: 0;
@@ -75,6 +77,18 @@ background-repeat: no-repeat;
         }
     </style>
 </head>
+<% 
+    String errorMessage = (String) request.getAttribute("errorMessage");
+    if (errorMessage != null) {
+%>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            showToast("<%= errorMessage %>", "error");
+        });
+    </script>
+<% 
+    }
+%>
 <body style="background-image: url(../Images/Back.jpg) ">
     <div class="container">
         <h2>Reset Password</h2>

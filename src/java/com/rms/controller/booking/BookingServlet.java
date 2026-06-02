@@ -7,7 +7,6 @@ import com.rms.util.EmailUtil;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 /**
  * Controller: Handles table booking submission.
@@ -42,15 +41,15 @@ public class BookingServlet extends HttpServlet {
             EmailUtil.sendBookingConfirmation(email, firstName, lastName, tableType,
                     placement, date, startTime, endTime, guestNumber, note);
 
-            // Show success alert and redirect
-            PrintWriter out = response.getWriter();
-            out.println("<html><head>");
-            out.println("<script type='text/javascript'>");
-            out.println("alert('Your table has been booked successfully!');");
-            out.println("window.location = '" + request.getContextPath() + "/Dynamic/Home.jsp';");
-            out.println("</script>");
-            out.println("</head></html>");
+            // Show success toast and redirect
+            HttpSession session = request.getSession();
+            session.setAttribute("toastMessage", "Your table has been booked successfully!");
+            session.setAttribute("toastType", "success");
+            response.sendRedirect(request.getContextPath() + "/Dynamic/Home.jsp");
         } else {
+            HttpSession session = request.getSession();
+            session.setAttribute("toastMessage", "Failed to book table. Please try again.");
+            session.setAttribute("toastType", "error");
             response.sendRedirect(request.getContextPath() + "/Dynamic/booking.jsp");
         }
     }

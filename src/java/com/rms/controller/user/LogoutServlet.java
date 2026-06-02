@@ -17,7 +17,11 @@ public class LogoutServlet extends HttpServlet {
         if (session != null) {
             session.invalidate();
         }
-        response.sendRedirect(request.getContextPath() + "/Pages/index.html");
+        // Set flash message in a new session for the toast notification
+        HttpSession newSession = request.getSession(true);
+        newSession.setAttribute("toastMessage", "Logged out successfully!");
+        newSession.setAttribute("toastType", "info");
+        response.sendRedirect(request.getContextPath() + "/Dynamic/Home.jsp");
     }
 
     @Override

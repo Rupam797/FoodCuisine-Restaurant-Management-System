@@ -12,9 +12,23 @@
   <title>Sign Up | Food Cuisine</title>
   <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'>
   <link rel="stylesheet" href="../Styles/style.css">
+  <link rel="stylesheet" href="../Styles/toast.css">
+  <script src="../Js/toast.js"></script>
   
 
 </head>
+<% 
+    String errorMessage = (String) request.getAttribute("errorMessage");
+    if (errorMessage != null) {
+%>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            showToast("<%= errorMessage %>", "error");
+        });
+    </script>
+<% 
+    }
+%>
 <body style="background-image: url(../Images/Back.jpg)">
   
 <div class="container">

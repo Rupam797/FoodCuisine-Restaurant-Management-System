@@ -22,11 +22,14 @@ public class AuthFilter implements Filter {
 
         String uri = request.getRequestURI();
 
-        // Allow access to auth-related pages without login
+        // Allow access to auth-related and public pages without login
         if (uri.contains("login.jsp") || uri.contains("signup.jsp")
                 || uri.contains("ForgotPassword.jsp") || uri.contains("VerifyOTP.jsp")
                 || uri.contains("ResetPassword.jsp") || uri.contains("otpVerification.jsp")
-                || uri.contains("EnterOTP.jsp")) {
+                || uri.contains("EnterOTP.jsp")
+                || uri.contains("Home.jsp") || uri.contains("menu.jsp")
+                || uri.contains("about.jsp") || uri.contains("contact.jsp")
+                || uri.contains("booking.jsp")) {
             chain.doFilter(req, res);
             return;
         }

@@ -1,21 +1,32 @@
 <%@ page import="javax.servlet.http.HttpSession" %>
 
-
 <%
     HttpSession sess = request.getSession(false); // Retrieve the session
-    String username = (String) sess.getAttribute("username");
-    String userEmail = (String) sess.getAttribute("userEmail");
-    String profilePic = (String) sess.getAttribute("profilePic");// Profile picture path
-    if (username != null && userEmail != null) {
+    String username = (sess != null) ? (String) sess.getAttribute("username") : null;
+    String userEmail = (sess != null) ? (String) sess.getAttribute("userEmail") : null;
+    String profilePic = (sess != null) ? (String) sess.getAttribute("profilePic") : null; // Profile picture path
 %>
 
+<!-- Toast Notification System Assets -->
+<link rel="stylesheet" href="../Styles/toast.css">
+<script src="../Js/toast.js"></script>
+
 <%
-    } else {
+    // Check for session flash messages (for toast notifications)
+    if (sess != null) {
+        String flashMessage = (String) sess.getAttribute("toastMessage");
+        String flashType = (String) sess.getAttribute("toastType");
+        if (flashMessage != null) {
+            sess.removeAttribute("toastMessage");
+            sess.removeAttribute("toastType");
 %>
-        <script>
-        alert("Session expired or user not logged in.");
-        </script>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    showToast("<%= flashMessage %>", "<%= flashType != null ? flashType : "info" %>");
+                });
+            </script>
 <%
+        }
     }
 %>
 
@@ -54,28 +65,33 @@
             <li><a class="nav__link" href="../Dynamic/contact.jsp">Contact</a></li>
             <li><a class="nav__link" href="../Dynamic/booking.jsp">Book Table</a></li>
 
-            <!-- Profile Dropdown Menu -->
-            <li class="profile-menu">
-              <button class="nav__link profile-button" onclick="toggleDropdown()">
-                <i class="fa-solid fa-user fa-bounce"></i> <%= username != null ? username : "Profile" %></button>
-              <div class="dropdown">
-                <div class="profile-info">
-                 <img src="<%= profilePic != null ? "../Images/" + profilePic : "../Images/profile-circle.jpg" %>" 
-                    alt="Profile" 
-                    class="profile-pic-large">
+            <% if (username != null && userEmail != null) { %>
+                <!-- Profile Dropdown Menu -->
+                <li class="profile-menu">
+                  <button class="nav__link profile-button" onclick="toggleDropdown()">
+                    <i class="fa-solid fa-user fa-bounce"></i> <%= username %></button>
+                  <div class="dropdown">
+                    <div class="profile-info">
+                     <img src="<%= profilePic != null ? "../Images/" + profilePic : "../Images/profile-circle.jpg" %>" 
+                        alt="Profile" 
+                        class="profile-pic-large">
 
-                  <p class="username">Hi, <%= username != null ? username : "Guest" %></p>
-                  <p class="email"><%= userEmail != null ? userEmail : "Not available" %></p>
-                </div>
-                <ul>
-                  <li><a href="../Dynamic/EditProfile.jsp"><i class="fa-solid fa-user-pen"></i>&nbsp;&nbsp;Edit Profile</a></li>
-                  <li><a href="../Dynamic/Complain.jsp"><i class="fa-solid fa-clipboard"></i>&nbsp;&nbsp;Complain Register</a></li>
-                  <li><a href="../Dynamic/Feedback.jsp"><i class="fa-solid fa-comment"></i>&nbsp;&nbsp;Feedback</a></li>
-                  <li><a href="../Dynamic/contact.jsp"><i class="fa-solid fa-address-book"></i>&nbsp;&nbsp;Contact Us</a></li>
-                  <li><a href="${pageContext.request.contextPath}/Logout"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;Logout</a></li>
-                </ul>
-              </div>
-            </li>
+                      <p class="username">Hi, <%= username %></p>
+                      <p class="email"><%= userEmail %></p>
+                    </div>
+                    <ul>
+                      <li><a href="../Dynamic/EditProfile.jsp"><i class="fa-solid fa-user-pen"></i>&nbsp;&nbsp;Edit Profile</a></li>
+                      <li><a href="../Dynamic/Complain.jsp"><i class="fa-solid fa-clipboard"></i>&nbsp;&nbsp;Complain Register</a></li>
+                      <li><a href="../Dynamic/Feedback.jsp"><i class="fa-solid fa-comment"></i>&nbsp;&nbsp;Feedback</a></li>
+                      <li><a href="../Dynamic/contact.jsp"><i class="fa-solid fa-address-book"></i>&nbsp;&nbsp;Contact Us</a></li>
+                      <li><a href="${pageContext.request.contextPath}/Logout"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;Logout</a></li>
+                    </ul>
+                  </div>
+                </li>
+            <% } else { %>
+                <li><a class="nav__link" href="../Dynamic/login.jsp">Log in</a></li>
+                <li><a class="nav__link" href="../Dynamic/signup.jsp">Sign Up</a></li>
+            <% } %>
           </div>
         </ul>
       </nav>

@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title> OTP  | Food Cuisine</title>
+     <title>OTP Verification</title>
      <link rel="shortcut icon" href="../Images/favicon.ico" type="image/x-icon">
-    
-    <title>OTP Verification</title>
-
-    <style>
+     <link rel="stylesheet" href="../Styles/toast.css">
+     <script src="../Js/toast.js"></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <style>
         /* General Styles */
         body {
             font-family: 'Arial', sans-serif;
@@ -101,14 +101,32 @@ background-repeat: no-repeat;
     <div class="container">
         <h2>OTP Verification</h2>
 
-        <!-- Add an alert message (if any) -->
+        <!-- Toast Alert Block -->
         <%
-            String alertMessage = (String) request.getAttribute("alertMessage");
-            if (alertMessage != null) {
+            String toastMsg = (String) request.getAttribute("alertMessage");
+            if (toastMsg == null) {
+                toastMsg = (String) request.getAttribute("errorMessage");
+            }
+            String toastTyp = "error"; 
+            
+            HttpSession s = request.getSession(false);
+            if (toastMsg == null && s != null) {
+                toastMsg = (String) s.getAttribute("toastMessage");
+                toastTyp = (String) s.getAttribute("toastType");
+                if (toastMsg != null) {
+                    s.removeAttribute("toastMessage");
+                    s.removeAttribute("toastType");
+                }
+            }
+
+            if (toastMsg != null) {
+                String type = (toastTyp != null) ? toastTyp : "error";
         %>
-            <div class="alert">
-                <%= alertMessage %>
-            </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    showToast("<%= toastMsg %>", "<%= type %>");
+                });
+            </script>
         <%
             }
         %>

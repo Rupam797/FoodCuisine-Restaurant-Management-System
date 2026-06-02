@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="build/generated/src"/>
 	<classpathentry kind="src" path="src/java"/>
-	<classpathentry kind="lib" path="build/web/WEB-INF/lib/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/mysql-connector-java-8.0.11.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/commons-fileupload-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/glassfish-4.1.1/glassfish/modules/javax.servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/glassfish-4.1.1/glassfish/modules/javax.servlet.jsp-api.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/glassfish-4.1.1/glassfish/modules/javax.mail.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/glassfish-4.1.1/glassfish/modules/javax.servlet.jsp.jstl-api.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="output" path="build/generated/classes"/>

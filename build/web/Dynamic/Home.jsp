@@ -41,9 +41,12 @@
 <% 
     String loginMessage = (String) request.getAttribute("loginMessage");
     if (loginMessage != null) {
+        String loginType = loginMessage.toLowerCase().contains("successful") ? "success" : "error";
 %>
     <script>
-        alert("<%= loginMessage %>");
+        document.addEventListener("DOMContentLoaded", function() {
+            showToast("<%= loginMessage %>", "<%= loginType %>");
+        });
     </script>
 <% 
     }

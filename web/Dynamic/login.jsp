@@ -9,33 +9,26 @@
   <title>Login | Food Cuisine</title>
   <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'>
   <link rel="stylesheet" href="../Styles/style.css">
- 
-
-  
-  
-  
+  <link rel="stylesheet" href="../Styles/toast.css">
+  <script src="../Js/toast.js"></script>
 </head>
 <% 
     String loginMessage = (String) request.getAttribute("loginMessage");
-    if (loginMessage != null) {
+    String successMessage = (String) request.getAttribute("successMessage");
+    if (loginMessage != null || successMessage != null) {
+        String msg = loginMessage != null ? loginMessage : successMessage;
+        String type = (successMessage != null || msg.toLowerCase().contains("successful")) ? "success" : "error";
 %>
     <script>
-        alert("<%= loginMessage %>");
+        document.addEventListener("DOMContentLoaded", function() {
+            showToast("<%= msg %>", "<%= type %>");
+        });
     </script>
 <% 
     }
 %>
 
-
-
-
-
 <body style="background-image: url(../Images/Back.jpg) ">
-    <!-- Custom Alert Box -->
-<div id="alertBox" class="custom-alert">
-    <span id="alertMessage"></span>
-    <button onclick="closeAlert()">Close</button>
-</div>
 
  
 <div class="container">

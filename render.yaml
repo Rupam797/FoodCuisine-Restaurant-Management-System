@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: restaurant-management-system
+    runtime: docker
+    plan: free
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: DB_DRIVER
+        value: com.mysql.cj.jdbc.Driver
+      - key: DB_URL
+        sync: false
+        placeholder: "jdbc:mysql://your-db-host:3306/rms_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true"
+      - key: DB_USERNAME
+        sync: false
+        placeholder: "Database username"
+      - key: DB_PASSWORD
+        sync: false
+        placeholder: "Database password"
+      - key: EMAIL_HOST
+        value: smtp.gmail.com
+      - key: EMAIL_PORT
+        value: "587"
+      - key: EMAIL_USERNAME
+        sync: false
+        placeholder: "Your sender email address"
+      - key: EMAIL_PASSWORD
+        sync: false
+        placeholder: "Your sender email app password"
