@@ -22,8 +22,14 @@ public class ResetPasswordServlet extends HttpServlet {
         String email = (String) session.getAttribute("email");
         String newPassword = request.getParameter("newPassword");
 
-        if (email == null || email.trim().isEmpty() || newPassword == null || newPassword.trim().isEmpty()) {
-            request.setAttribute("errorMessage", "Email and Password cannot be empty.");
+        if (email == null || email.trim().isEmpty()) {
+            request.setAttribute("errorMessage", "Session expired or invalid. Please start over.");
+            request.getRequestDispatcher("/Dynamic/ForgotPassword.jsp").forward(request, response);
+            return;
+        }
+
+        if (newPassword == null || newPassword.trim().isEmpty()) {
+            request.setAttribute("errorMessage", "Password cannot be empty.");
             request.getRequestDispatcher("/Dynamic/ResetPassword.jsp").forward(request, response);
             return;
         }

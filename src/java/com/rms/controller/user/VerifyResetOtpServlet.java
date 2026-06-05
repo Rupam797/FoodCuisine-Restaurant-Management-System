@@ -15,13 +15,19 @@ public class VerifyResetOtpServlet extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-        int sessionOtp = (int) session.getAttribute("otp");
+        Integer sessionOtp = (Integer) session.getAttribute("otp");
         String email = (String) session.getAttribute("email");
+
+        if (sessionOtp == null || email == null) {
+            request.setAttribute("errorMessage", "Session expired or invalid. Please start over.");
+            request.getRequestDispatcher("/Dynamic/ForgotPassword.jsp").forward(request, response);
+            return;
+        }
 
         try {
             int enteredOtp = Integer.parseInt(request.getParameter("otp"));
 
-            if (enteredOtp == sessionOtp) {
+            if (enteredOtp == sessionOtp.intValue()) {
                 request.setAttribute("email", email);
                 request.getRequestDispatcher("/Dynamic/ResetPassword.jsp").forward(request, response);
             } else {

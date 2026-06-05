@@ -33,6 +33,7 @@ public class ForgotPasswordServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("otp", otp);
             session.setAttribute("email", email);
+            System.out.println("DEBUG: Generated OTP for " + email + " is: " + otp);
 
             // Send OTP email
             boolean sent = EmailUtil.sendOTP(email, otp);
