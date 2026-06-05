@@ -72,7 +72,7 @@
                     <i class="fa-solid fa-user fa-bounce"></i> <%= username %></button>
                   <div class="dropdown">
                     <div class="profile-info">
-                     <img src="<%= profilePic != null ? "../Images/" + profilePic : "../Images/profile-circle.jpg" %>" 
+                     <img src="${pageContext.request.contextPath}/ProfilePic?email=<%= userEmail %>" 
                         alt="Profile" 
                         class="profile-pic-large">
 

@@ -73,6 +73,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>ProfilePicServlet</servlet-name>
+        <servlet-class>com.rms.controller.user.ProfilePicServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProfilePicServlet</servlet-name>
+        <url-pattern>/ProfilePic</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>ForgotPasswordServlet</servlet-name>
         <servlet-class>com.rms.controller.user.ForgotPasswordServlet</servlet-class>
     </servlet>

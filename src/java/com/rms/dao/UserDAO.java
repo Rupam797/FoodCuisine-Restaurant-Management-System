@@ -171,6 +171,25 @@ public class UserDAO {
     }
 
     /**
+     * Retrieves the profile picture raw bytes for a user by email.
+     */
+    public byte[] getProfilePic(String email) {
+        String sql = "SELECT profile_pic FROM users WHERE email = ?";
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pst = conn.prepareStatement(sql)) {
+            pst.setString(1, email);
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getBytes("profile_pic");
+                }
+            }
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error fetching profile picture", e);
+        }
+        return null;
+    }
+
+    /**
      * Gets all users (for admin panel).
      */
     public List<User> getAllUsers() {

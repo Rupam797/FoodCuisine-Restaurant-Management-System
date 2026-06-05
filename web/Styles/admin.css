@@ -1,0 +1,329 @@
+/* admin.css - Admin Panel Layout Overrides aligned with Main Project Theme */
+
+body {
+    background-color: var(--lightGreen-2) !important;
+    background-image: none !important; /* Remove any background image to match project theme */
+    font-family: 'Raleway', sans-serif;
+    color: var(--black-1);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    visibility: visible !important; /* Override hidden visibility from globalStyles.css */
+}
+
+/* Header Section */
+header {
+    background-color: var(--green-1); /* Use project brand green */
+    padding: 1.5rem 3rem;
+    color: var(--white-1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+header .logo img {
+    height: 5rem;
+    width: auto;
+    border-radius: 4px;
+}
+
+header .title span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+header #btn {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+header #btn:hover {
+    background-color: #d9534f;
+    transform: translateY(-2px);
+}
+
+/* Page Container - transparent white overlay matching main design */
+.container {
+    flex: 1;
+    max-width: 1200px;
+    width: 90%;
+    margin: 4rem auto;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 3.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Back navigation link styling */
+.back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--green-1);
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: var(--green-2);
+}
+
+.back-link i {
+    margin-right: 5px;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--green-1);
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 3.6rem;
+}
+
+/* Cards Section - using var(--lightGreen-1) to match home specials cards */
+.cards-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: var(--lightGreen-1);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    width: 28rem;
+    overflow: hidden;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(38, 100, 59, 0.15);
+}
+
+.card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.card img {
+    width: 100%;
+    height: 16rem;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.card img:hover {
+    transform: scale(1.03);
+}
+
+.card h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    color: var(--green-1);
+    margin: 1.5rem 0 1rem 0;
+}
+
+.card p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.4rem;
+    color: var(--black-2);
+    margin-bottom: 2rem;
+    padding: 0 1.5rem;
+    line-height: 1.4;
+}
+
+/* Tables Section */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+th, td {
+    padding: 1.4rem 2rem;
+    text-align: left;
+    font-size: 1.4rem;
+}
+
+th {
+    background-color: var(--green-1);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+}
+
+tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: background-color 0.2s ease;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+tr:hover {
+    background-color: rgba(162, 222, 150, 0.2); /* var(--green-2) with opacity */
+}
+
+/* Form Styles */
+.form-container {
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    color: var(--black-1);
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="file"],
+select {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.4rem;
+    border: none;
+    background-color: var(--lightGreen-1);
+    border-radius: 8px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    color: var(--black-2);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="file"]:focus,
+select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--green-1);
+    background-color: white;
+}
+
+/* Button Styles */
+button, .btn {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    padding: 1.2rem 2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+button.edit, .btn-primary {
+    background-color: var(--green-1);
+    color: var(--white-1);
+    text-decoration: none;
+}
+
+button.edit:hover, .btn-primary:hover {
+    background-color: #1e502f;
+    transform: translateY(-2px);
+}
+
+button.delete, .btn-danger {
+    background-color: #d9534f;
+    color: white;
+    text-decoration: none;
+}
+
+button.delete:hover, .btn-danger:hover {
+    background-color: #c9302c;
+    transform: translateY(-2px);
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: var(--green-1);
+    color: var(--white-1);
+}
+
+.btn-submit:hover {
+    background-color: #1e502f;
+    transform: translateY(-2px);
+}
+
+.btn-cancel {
+    display: block;
+    width: 100%;
+    background-color: #8c9689;
+    color: white;
+    text-decoration: none;
+    margin-top: 1rem;
+    box-sizing: border-box;
+}
+
+.btn-cancel:hover {
+    background-color: #727b6f;
+    transform: translateY(-2px);
+}
+
+/* Footer Section */
+footer {
+    background-color: var(--green-1);
+    color: var(--white-1);
+    text-align: center;
+    padding: 2rem 0;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.4rem;
+    margin-top: auto;
+}

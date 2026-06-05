@@ -165,13 +165,59 @@ input[type="file"] {
     }
 }
 
+        .profile-pic-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #26643b;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .profile-pic-container:hover {
+            transform: scale(1.05);
+            border-color: #218838;
+        }
+        .profile-pic-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .profile-pic-container .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: rgba(38, 100, 59, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 0.8em;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .profile-pic-container:hover .overlay {
+            opacity: 1;
+        }
     </style>
-       
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body style="background-image: url(../Images/Back.jpg)">
     <div class="container">
         <h1>Edit Profile</h1>
-        <form action="/EditProfile" method="post" enctype="multipart/form-data">
+        <form action="${pageContext.request.contextPath}/EditProfile" method="post" enctype="multipart/form-data">
+            <div class="profile-pic-container" title="Click to upload profile picture">
+                <img id="previewPic" src="${pageContext.request.contextPath}/ProfilePic?email=<%= userEmail %>" alt="Profile Picture">
+                <div class="overlay">
+                    <i class="fa-solid fa-camera"></i>&nbsp;Upload
+                </div>
+            </div>
             <div class="form-group">
                 <label for="username">New Username:</label>
                 <input type="text" id="username" name="username" value="<%= username %>" required>
@@ -196,5 +242,21 @@ input[type="file"] {
             <a href="../Dynamic/Home.jsp" class="btn_cancel">Cancel</a>
         </form>
     </div>
+    <script>
+        document.getElementById('profilePic').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    document.getElementById('previewPic').src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.querySelector('.profile-pic-container').addEventListener('click', function() {
+            document.getElementById('profilePic').click();
+        });
+    </script>
 </body>
 </html>
