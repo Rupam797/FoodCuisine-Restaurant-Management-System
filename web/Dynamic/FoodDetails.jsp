@@ -1,5 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    if (request.getAttribute("foods") == null) {
+        response.sendRedirect(request.getContextPath() + "/admin/foods");
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +31,7 @@
                     <th>FOOD NAME</th>
                     <th>FOOD PRICE</th>
                     <th>FOOD CATEGORY</th>
+                    <th>FOOD DESCRIPTION</th>
                     <th>FOOD IMG</th>
                     <th>ACTION</th>
                 </tr>
@@ -36,6 +43,7 @@
                 <td>${food.foodName}</td>
                 <td>₹${food.foodPrice}</td>
                 <td>${food.foodCategory}</td>
+                <td>${food.foodDesc}</td>
                 <td>${food.foodImg}</td>
                 <td>
                     <form action="${pageContext.request.contextPath}/admin/foods" method="post" style="display:inline;">

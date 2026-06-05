@@ -42,10 +42,13 @@ public class ManageFoodsServlet extends HttpServlet {
         }
 
         // Default: Add food
-        int id = Integer.parseInt(request.getParameter("fid"));
         String name = request.getParameter("foodname");
         int price = Integer.parseInt(request.getParameter("foodprice"));
         String category = request.getParameter("foodcategory");
+        String desc = request.getParameter("fooddesc");
+        if (desc == null) {
+            desc = "";
+        }
 
         // Handle image upload
         Part avatarImage = request.getPart("foodimg");
@@ -62,7 +65,7 @@ public class ManageFoodsServlet extends HttpServlet {
 
         String avatarDbPath = "uploads/" + avatarFileName;
 
-        Food food = new Food(id, name, price, category, avatarDbPath);
+        Food food = new Food(0, name, price, category, avatarDbPath, desc);
         foodDAO.addFood(food);
 
         response.sendRedirect(request.getContextPath() + "/admin/foods");

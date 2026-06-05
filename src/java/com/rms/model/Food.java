@@ -10,6 +10,7 @@ public class Food {
     private int foodPrice;
     private String foodCategory;
     private String foodImg;
+    private String foodDesc;
 
     public Food() {}
 
@@ -19,6 +20,16 @@ public class Food {
         this.foodPrice = foodPrice;
         this.foodCategory = foodCategory;
         this.foodImg = foodImg;
+        this.foodDesc = "";
+    }
+
+    public Food(int foodId, String foodName, int foodPrice, String foodCategory, String foodImg, String foodDesc) {
+        this.foodId = foodId;
+        this.foodName = foodName;
+        this.foodPrice = foodPrice;
+        this.foodCategory = foodCategory;
+        this.foodImg = foodImg;
+        this.foodDesc = foodDesc;
     }
 
     public int getFoodId() { return foodId; }
@@ -35,4 +46,7 @@ public class Food {
 
     public String getFoodImg() { return foodImg; }
     public void setFoodImg(String foodImg) { this.foodImg = foodImg; }
+
+    public String getFoodDesc() { return foodDesc; }
+    public void setFoodDesc(String foodDesc) { this.foodDesc = foodDesc; }
 }

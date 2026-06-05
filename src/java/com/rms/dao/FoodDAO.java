@@ -20,15 +20,15 @@ public class FoodDAO {
      * Adds a new food item to the database.
      */
     public boolean addFood(Food food) {
-        String sql = "INSERT INTO foods (food_id, food_name, food_price, food_category, food_img) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO foods (food_name, food_price, food_category, food_img, food_desc) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
 
-            pst.setInt(1, food.getFoodId());
-            pst.setString(2, food.getFoodName());
-            pst.setInt(3, food.getFoodPrice());
-            pst.setString(4, food.getFoodCategory());
-            pst.setString(5, food.getFoodImg());
+            pst.setString(1, food.getFoodName());
+            pst.setInt(2, food.getFoodPrice());
+            pst.setString(3, food.getFoodCategory());
+            pst.setString(4, food.getFoodImg());
+            pst.setString(5, food.getFoodDesc());
 
             return pst.executeUpdate() > 0;
         } catch (SQLException e) {
@@ -42,7 +42,7 @@ public class FoodDAO {
      */
     public List<Food> getFoodsByCategory(String category) {
         List<Food> foods = new ArrayList<>();
-        String sql = "SELECT food_id, food_name, food_price, food_img FROM foods WHERE food_category = ?";
+        String sql = "SELECT food_id, food_name, food_price, food_img, food_desc FROM foods WHERE food_category = ?";
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
 
@@ -56,6 +56,7 @@ public class FoodDAO {
                 food.setFoodPrice(rs.getInt("food_price"));
                 food.setFoodImg(rs.getString("food_img"));
                 food.setFoodCategory(category);
+                food.setFoodDesc(rs.getString("food_desc"));
                 foods.add(food);
             }
         } catch (SQLException e) {
@@ -68,7 +69,7 @@ public class FoodDAO {
      * Gets a single food item by ID (for add-to-cart).
      */
     public Food getFoodById(int foodId) {
-        String sql = "SELECT food_id, food_name, food_price, food_img, food_category FROM foods WHERE food_id = ?";
+        String sql = "SELECT food_id, food_name, food_price, food_img, food_category, food_desc FROM foods WHERE food_id = ?";
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
 
@@ -81,7 +82,8 @@ public class FoodDAO {
                     rs.getString("food_name"),
                     rs.getInt("food_price"),
                     rs.getString("food_category"),
-                    rs.getString("food_img")
+                    rs.getString("food_img"),
+                    rs.getString("food_desc")
                 );
             }
         } catch (SQLException e) {
@@ -106,7 +108,8 @@ public class FoodDAO {
                     rs.getString("food_name"),
                     rs.getInt("food_price"),
                     rs.getString("food_category"),
-                    rs.getString("food_img")
+                    rs.getString("food_img"),
+                    rs.getString("food_desc")
                 ));
             }
         } catch (SQLException e) {

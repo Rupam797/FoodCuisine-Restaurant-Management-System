@@ -20,10 +20,6 @@
         <div class="form-container">
             <form id="foodForm" action="${pageContext.request.contextPath}/admin/foods" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="food_id">Food ID:</label>
-                    <input type="number" id="food_id" name="fid" required>
-                </div>
-                <div class="form-group">
                     <label for="food_name">Food Name:</label>
                     <input type="text" id="food_name" name="foodname" required>
                 </div>
@@ -44,6 +40,10 @@
                         <option value="Lunch">Lunch</option>
                         <option value="Dinner">Dinner</option>
                     </select>
+                </div>
+                <div class="form-group">
+                    <label for="food_desc">Food Description:</label>
+                    <textarea id="food_desc" name="fooddesc" placeholder="Enter food description..." style="width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #b2c9b6; border-radius: 6px; font-family: 'Raleway', sans-serif; box-sizing: border-box; background-color: #fcfdfc; resize: vertical;" rows="3"></textarea>
                 </div>
                 <button type="submit" class="btn-submit">Add Food</button>
                 <a href="${pageContext.request.contextPath}/Dynamic/ADashbord.jsp" class="btn-cancel">Cancel</a>
